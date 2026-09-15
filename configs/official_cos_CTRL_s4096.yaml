@@ -1,0 +1,136 @@
+SWA: false
+all_dataset:
+- FaceForensics++
+- FF-F2F
+- FF-DF
+- FF-FS
+- FF-NT
+- FaceShifter
+- DeepFakeDetection
+- Celeb-DF-v1
+- Celeb-DF-v2
+- DFDCP
+- DFDC
+- DeeperForensics-1.0
+- UADFV
+backbone_config:
+  dropout: false
+  inc: 3
+  mode: adjust_channel
+  num_classes: 2
+backbone_name: xception
+compression: c23
+consistency_temperature: 0.1
+consistency_weight: 0.1
+cross_method_consistency: false
+cuda: true
+cudnn: true
+data_aug:
+  blur_limit:
+  - 3
+  - 7
+  blur_prob: 0.5
+  brightness_limit:
+  - -0.1
+  - 0.1
+  brightness_prob: 0.5
+  contrast_limit:
+  - -0.1
+  - 0.1
+  flip_prob: 0.5
+  quality_lower: 40
+  quality_upper: 100
+  rotate_limit:
+  - -10
+  - 10
+  rotate_prob: 0.5
+dataset_type: pair
+encoder_feat_dim: 512
+frame_num:
+  test: 32
+  train: 32
+label_dict:
+  CelebDFv1_fake: 1
+  CelebDFv1_real: 0
+  CelebDFv2_fake: 1
+  CelebDFv2_real: 0
+  DFDCP_FakeA: 1
+  DFDCP_FakeB: 1
+  DFDCP_Real: 0
+  DFDC_Fake: 1
+  DFDC_Real: 0
+  DFD_fake: 1
+  DFD_real: 0
+  DF_fake: 1
+  DF_real: 0
+  FF-DF: 1
+  FF-F2F: 2
+  FF-FH: 1
+  FF-FS: 3
+  FF-NT: 4
+  FF-real: 0
+  FaceShifter: 1
+  UADFV_Fake: 1
+  UADFV_Real: 0
+  roop_Fake: 1
+  roop_Real: 0
+log_dir: /root/autodl-tmp/DeepfakeBench/logs/ucf
+logdir: ./logs
+loss_func:
+  cls_loss: cross_entropy
+  con_loss: contrastive_regularization
+  cons2_loss: cross_method_consistency
+  rec_loss: l1loss
+  spe_loss: cross_entropy
+losstype: null
+lr_T_max: 5
+lr_eta_min: 1.0e-06
+lr_scheduler: cosine
+manualSeed: 4096
+mean:
+- 0.5
+- 0.5
+- 0.5
+metric_scoring: auc
+model_name: ucf
+nEpochs: 5
+optimizer:
+  adam:
+    amsgrad: false
+    beta1: 0.9
+    beta2: 0.999
+    eps: 1.0e-08
+    lr: 0.0002
+    weight_decay: 0.0005
+  sgd:
+    lr: 0.0002
+    momentum: 0.9
+    weight_decay: 0.0005
+  type: adam
+pretrained: ./training/pretrained/xception-b5690688.pth
+rec_iter: 100
+resolution: 256
+save_ckpt: false
+save_epoch: 1
+save_feat: true
+spsa: false
+start_epoch: 0
+std:
+- 0.5
+- 0.5
+- 0.5
+swa_start: 3
+test_batchSize: 32
+test_dataset:
+- Celeb-DF-v2
+test_every: 1
+train_batchSize: 16
+train_dataset:
+- FF-F2F
+- FF-DF
+- FF-FS
+- FF-NT
+use_data_augmentation: true
+with_landmark: false
+with_mask: false
+workers: 8
