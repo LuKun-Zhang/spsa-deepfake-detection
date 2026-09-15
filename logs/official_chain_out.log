@@ -1,0 +1,5 @@
+[official-chain] 15:25:56 start OFFICIAL-CTRL s1024 (5ep, lr=const)
+[official-chain] 19:03:09 OFFICIAL-CTRL done
+[official-chain] 19:03:09 start OFFICIAL-SPSA+SWA s1024 (5ep, lr=const)
+[official-chain] 23:13:26 OFFICIAL-SPSA+SWA done
+OFFICIAL_CHAIN_DONE 23:13:26

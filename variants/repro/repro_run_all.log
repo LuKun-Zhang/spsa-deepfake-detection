@@ -1,0 +1,8 @@
+===== START spsaswa_s1024 2026-08-31 00:06:03 =====
+/root/autodl-tmp/run_all_repro.sh: line 6:  3724 Killed                  $PY training/train.py --detector_path training/config/detector/$yaml > /root/autodl-tmp/repro_${name}.log 2>&1
+===== END spsaswa_s1024 rc=137 2026-08-31 00:17:45 =====
+===== START spsaswa_s2048 2026-08-31 00:17:45 =====
+===== END spsaswa_s2048 rc=0 2026-08-31 04:41:50 =====
+===== START ctrl_s1024 2026-08-31 04:41:50 =====
+===== END ctrl_s1024 rc=0 2026-08-31 08:35:03 =====
+===== START ctrl_s2048 2026-08-31 08:35:03 =====

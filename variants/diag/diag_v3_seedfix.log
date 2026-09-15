@@ -1,0 +1,80 @@
+/root/miniconda3/lib/python3.12/site-packages/albumentations/__init__.py:24: UserWarning: A new version of Albumentations is available: 2.0.8 (you have 1.4.21). Upgrade using: pip install -U albumentations. To disable automatic update checks, set the environment variable NO_ALBUMENTATIONS_UPDATE to 1.
+  check_for_updates()
+2026-08-31 14:07:54,617 - INFO - Save log to ./logs/training/ucf_2026-08-31-14-07-54
+2026-08-31 14:07:54,617 - INFO - --------------- Configuration ---------------
+2026-08-31 14:07:54,617 - INFO - Parameters: 
+log_dir: ./logs/training/
+pretrained: ./training/pretrained/xception-b5690688.pth
+model_name: ucf
+backbone_name: xception
+encoder_feat_dim: 512
+backbone_config: {'mode': 'adjust_channel', 'num_classes': 2, 'inc': 3, 'dropout': False}
+all_dataset: ['FaceForensics++', 'FF-F2F', 'FF-DF', 'FF-FS', 'FF-NT', 'FaceShifter', 'DeepFakeDetection', 'Celeb-DF-v1', 'Celeb-DF-v2', 'DFDCP', 'DFDC', 'DeeperForensics-1.0', 'UADFV']
+train_dataset: ['FF-F2F', 'FF-DF', 'FF-FS', 'FF-NT']
+test_dataset: ['Celeb-DF-v2']
+dataset_type: pair
+compression: c23
+train_batchSize: 16
+test_batchSize: 32
+workers: 8
+frame_num: {'train': 32, 'test': 32}
+resolution: 256
+with_mask: False
+with_landmark: False
+save_feat: True
+label_dict: {'DFD_fake': 1, 'DFD_real': 0, 'FaceShifter': 1, 'FF-FH': 1, 'FF-DF': 1, 'FF-F2F': 2, 'FF-FS': 3, 'FF-NT': 4, 'FF-real': 0, 'CelebDFv1_real': 0, 'CelebDFv1_fake': 1, 'CelebDFv2_real': 0, 'CelebDFv2_fake': 1, 'DFDCP_Real': 0, 'DFDCP_FakeA': 1, 'DFDCP_FakeB': 1, 'DFDC_Fake': 1, 'DFDC_Real': 0, 'DF_fake': 1, 'DF_real': 0, 'UADFV_Fake': 1, 'UADFV_Real': 0, 'roop_Fake': 1, 'roop_Real': 0}
+use_data_augmentation: True
+data_aug: {'flip_prob': 0.5, 'rotate_prob': 0.5, 'rotate_limit': [-10, 10], 'blur_prob': 0.5, 'blur_limit': [3, 7], 'brightness_prob': 0.5, 'brightness_limit': [-0.1, 0.1], 'contrast_limit': [-0.1, 0.1], 'quality_lower': 40, 'quality_upper': 100}
+mean: [0.5, 0.5, 0.5]
+std: [0.5, 0.5, 0.5]
+optimizer: {'type': 'adam', 'adam': {'lr': 0.0002, 'beta1': 0.9, 'beta2': 0.999, 'eps': 1e-08, 'weight_decay': 0.0005, 'amsgrad': False}, 'sgd': {'lr': 0.0002, 'momentum': 0.9, 'weight_decay': 0.0005}}
+lr_scheduler: cosine
+nEpochs: 3
+start_epoch: 0
+save_epoch: 1
+rec_iter: 100
+logdir: ./logs
+manualSeed: 2048
+save_ckpt: True
+loss_func: {'cls_loss': 'cross_entropy', 'spe_loss': 'cross_entropy', 'con_loss': 'contrastive_regularization', 'rec_loss': 'l1loss', 'cons2_loss': 'cross_method_consistency'}
+cross_method_consistency: False
+consistency_weight: 0.1
+consistency_temperature: 0.1
+losstype: None
+metric_scoring: auc
+cuda: True
+cudnn: True
+lr_T_max: 3
+lr_eta_min: 1e-06
+SWA: True
+swa_start: 2
+spsa: True
+mode: train
+lmdb: False
+dry_run: False
+rgb_dir: ./datasets/rgb
+lmdb_dir: ./datasets/lmdb
+dataset_json_folder: ./preprocessing/dataset_json
+save_avg: True
+local_rank: 0
+ddp: False
+
+2026-08-31 14:07:55,592 - INFO - Load pretrained model successfully!
+2026-08-31 14:07:55,784 - INFO - Load pretrained model successfully!
+2026-08-31 14:07:56,393 - INFO - ===> Epoch[0] start!
+2026-08-31 14:07:56,442 - INFO - data_dict saved to ./logs/training/ucf_2026-08-31-14-07-54/train/FF-F2F,FF-DF,FF-FS,FF-NT/data_dict_train.pickle
+['in_channels', 'out_channels', 'kernel_size', 'stride', 'padding', 'dilation', 'groups', 'bias', 'padding_mode', 'device', 'dtype']
+spatial_count=0 keep_stride_count=0
+[dataset/__init__] skip FWABlendDataset: RuntimeError: Unable to open preprocessing/dlib_tools/shape_predictor_81_face_landmarks.dat
+[dataset/__init__] skip FWABlendDataset: RuntimeError: Unable to open preprocessing/dlib_tools/shape_predictor_81_face_landmarks.dat
+  0%|          | 0/5744 [00:00<?, ?it/s]2026-08-31 14:07:57,853 - INFO - MEMDBG iter0 start alloc=0.35GB reserved=0.37GB
+2026-08-31 14:08:01,052 - INFO - Iter: 0    training-loss, overall: 1.9954781532287598    training-loss, common: 0.6922089457511902    training-loss, specific: 1.619060754776001    training-loss, reconstruction: 1.8354853391647339    training-loss, contrastive: 11.814349174499512    
+2026-08-31 14:08:01,057 - INFO - Iter: 0    training-metric, acc: 0.53125    training-metric, acc_spe: 0.125    training-metric, auc: 0.5625    training-metric, eer: 0.4375    training-metric, ap: 0.5881583453894702    
+2026-08-31 14:08:01,058 - INFO - MEMDBG iter0 end alloc=0.97GB peak=17.74GB
+  0%|          | 1/5744 [00:04<6:53:55,  4.32s/it]2026-08-31 14:08:01,060 - INFO - MEMDBG iter1 start alloc=0.97GB reserved=6.93GB
+2026-08-31 14:08:01,553 - INFO - MEMDBG iter1 end alloc=1.00GB peak=17.74GB
+  0%|          | 2/5744 [00:04<3:18:17,  2.07s/it]2026-08-31 14:08:01,557 - INFO - MEMDBG iter2 start alloc=0.95GB reserved=14.84GB
+2026-08-31 14:08:02,009 - INFO - MEMDBG iter2 end alloc=0.97GB peak=17.74GB
+  0%|          | 3/5744 [00:05<2:07:38,  1.33s/it]2026-08-31 14:08:02,011 - INFO - MEMDBG iter3 start alloc=0.97GB reserved=14.84GB
+2026-08-31 14:08:02,461 - INFO - MEMDBG iter3 end alloc=1.00GB peak=17.74GB
+  0%|          | 4/5744 [00:05<1:34:18,  1.01it/s]  0%|          | 5/5744 [00:06<1:16:12,  1.26it/s]  0%|          | 6/5744 [00:06<1:04:55,  1.47it/s]  0%|          | 7/5744 [00:07<57:49,  1.65it/s]    0%|          | 8/5744 [00:07<53:01,  1.80it/s]  0%|          | 9/5744 [00:08<50:14,  1.90it/s]  0%|          | 10/5744 [00:08<48:03,  1.99it/s]  0%|          | 11/5744 [00:08<46:39,  2.05it/s]  0%|          | 12/5744 [00:09<45:44,  2.09it/s]  0%|          | 13/5744 [00:09<45:13,  2.11it/s]  0%|          | 14/5744 [00:10<44:32,  2.14it/s]  0%|          | 15/5744 [00:10<44:07,  2.16it/s]  0%|          | 16/5744 [00:11<43:53,  2.18it/s]  0%|          | 17/5744 [00:11<43:51,  2.18it/s]  0%|          | 18/5744 [00:12<43:58,  2.17it/s]  0%|          | 19/5744 [00:12<45:59,  2.07it/s]  0%|          | 20/5744 [00:13<45:18,  2.11it/s]  0%|          | 21/5744 [00:13<44:53,  2.12it/s]  0%|          | 22/5744 [00:14<44:18,  2.15it/s]  0%|          | 23/5744 [00:14<43:56,  2.17it/s]  0%|          | 24/5744 [00:14<43:43,  2.18it/s]  0%|          | 25/5744 [00:15<43:43,  2.18it/s]  0%|          | 26/5744 [00:15<43:36,  2.19it/s]  0%|          | 27/5744 [00:16<43:29,  2.19it/s]  0%|          | 28/5744 [00:16<43:29,  2.19it/s]  1%|          | 29/5744 [00:17<43:39,  2.18it/s]  1%|          | 30/5744 [00:17<43:41,  2.18it/s]  1%|          | 31/5744 [00:18<43:28,  2.19it/s]  1%|          | 32/5744 [00:18<43:24,  2.19it/s]  1%|          | 33/5744 [00:19<43:31,  2.19it/s]  1%|          | 34/5744 [00:19<43:29,  2.19it/s]  1%|          | 35/5744 [00:19<43:29,  2.19it/s]  1%|          | 36/5744 [00:20<43:31,  2.19it/s]  1%|          | 37/5744 [00:20<43:26,  2.19it/s]  1%|          | 38/5744 [00:21<43:21,  2.19it/s]  1%|          | 39/5744 [00:21<43:17,  2.20it/s]  1%|          | 40/5744 [00:22<43:22,  2.19it/s]  1%|          | 41/5744 [00:22<43:38,  2.18it/s]  1%|          | 42/5744 [00:23<43:33,  2.18it/s]  1%|          | 43/5744 [00:23<43:33,  2.18it/s]  1%|          | 44/5744 [00:24<43:31,  2.18it/s]  1%|          | 45/5744 [00:24<43:35,  2.18it/s]  1%|          | 46/5744 [00:24<43:57,  2.16it/s]  1%|          | 47/5744 [00:25<43:38,  2.18it/s]  1%|          | 48/5744 [00:25<43:40,  2.17it/s]  1%|          | 49/5744 [00:26<43:47,  2.17it/s]  1%|          | 50/5744 [00:26<43:55,  2.16it/s]  1%|          | 51/5744 [00:27<44:00,  2.16it/s]  1%|          | 52/5744 [00:27<43:57,  2.16it/s]  1%|          | 53/5744 [00:28<43:50,  2.16it/s]  1%|          | 54/5744 [00:28<43:47,  2.17it/s]  1%|          | 55/5744 [00:29<43:38,  2.17it/s]  1%|          | 56/5744 [00:29<43:27,  2.18it/s]  1%|          | 57/5744 [00:30<43:40,  2.17it/s]  1%|          | 58/5744 [00:30<55:26,  1.71it/s]  1%|          | 59/5744 [00:31<51:52,  1.83it/s]  1%|          | 60/5744 [00:31<49:20,  1.92it/s]  1%|          | 61/5744 [00:32<47:38,  1.99it/s]  1%|          | 62/5744 [00:32<46:28,  2.04it/s]  1%|          | 63/5744 [00:33<45:33,  2.08it/s]  1%|          | 64/5744 [00:33<44:52,  2.11it/s]  1%|          | 65/5744 [00:34<44:24,  2.13it/s]  1%|          | 66/5744 [00:34<44:04,  2.15it/s]  1%|          | 67/5744 [00:35<44:06,  2.15it/s]  1%|          | 68/5744 [00:35<44:05,  2.15it/s]  1%|          | 69/5744 [00:36<43:52,  2.16it/s]  1%|          | 70/5744 [00:36<43:50,  2.16it/s]  1%|          | 71/5744 [00:36<43:33,  2.17it/s]  1%|▏         | 72/5744 [00:37<43:21,  2.18it/s]  1%|▏         | 73/5744 [00:37<43:35,  2.17it/s]  1%|▏         | 74/5744 [00:38<43:30,  2.17it/s]  1%|▏         | 75/5744 [00:38<43:22,  2.18it/s]  1%|▏         | 76/5744 [00:39<43:17,  2.18it/s]  1%|▏         | 77/5744 [00:39<43:19,  2.18it/s]  1%|▏         | 78/5744 [00:40<43:09,  2.19it/s]  1%|▏         | 79/5744 [00:40<43:15,  2.18it/s]  1%|▏         | 80/5744 [00:41<43:08,  2.19it/s]  1%|▏         | 81/5744 [00:41<43:07,  2.19it/s]  1%|▏         | 82/5744 [00:41<43:13,  2.18it/s]  1%|▏         | 83/5744 [00:42<43:03,  2.19it/s]  1%|▏         | 84/5744 [00:42<43:06,  2.19it/s]  1%|▏         | 85/5744 [00:43<43:03,  2.19it/s]  1%|▏         | 86/5744 [00:43<43:02,  2.19it/s]  2%|▏         | 87/5744 [00:44<42:53,  2.20it/s]  2%|▏         | 88/5744 [00:44<42:54,  2.20it/s]  2%|▏         | 89/5744 [00:45<42:55,  2.20it/s]  2%|▏         | 90/5744 [00:45<43:00,  2.19it/s]  2%|▏         | 91/5744 [00:46<42:50,  2.20it/s]  2%|▏         | 92/5744 [00:46<42:46,  2.20it/s]  2%|▏         | 93/5744 [00:46<42:53,  2.20it/s]  2%|▏         | 94/5744 [00:47<42:57,  2.19it/s]  2%|▏         | 95/5744 [00:47<42:55,  2.19it/s]  2%|▏         | 96/5744 [00:48<42:53,  2.19it/s]  2%|▏         | 97/5744 [00:48<43:07,  2.18it/s]  2%|▏         | 98/5744 [00:49<43:15,  2.18it/s]  2%|▏         | 99/5744 [00:49<43:16,  2.17it/s]  2%|▏         | 100/5744 [00:50<43:18,  2.17it/s]  2%|▏         | 101/5744 [00:50<43:30,  2.16it/s]  2%|▏         | 102/5744 [00:51<43:25,  2.17it/s]  2%|▏         | 103/5744 [00:51<43:08,  2.18it/s]  2%|▏         | 104/5744 [00:52<42:57,  2.19it/s]  2%|▏         | 105/5744 [00:52<43:00,  2.19it/s]  2%|▏         | 106/5744 [00:52<43:09,  2.18it/s]  2%|▏         | 107/5744 [00:53<43:22,  2.17it/s]  2%|▏         | 108/5744 [00:53<43:15,  2.17it/s]  2%|▏         | 109/5744 [00:54<43:08,  2.18it/s]  2%|▏         | 110/5744 [00:54<43:13,  2.17it/s]  2%|▏         | 111/5744 [00:55<43:03,  2.18it/s]  2%|▏         | 112/5744 [00:55<43:08,  2.18it/s]  2%|▏         | 113/5744 [00:56<43:11,  2.17it/s]  2%|▏         | 114/5744 [00:56<43:15,  2.17it/s]  2%|▏         | 115/5744 [00:57<43:13,  2.17it/s]  2%|▏         | 116/5744 [00:57<43:06,  2.18it/s]  2%|▏         | 117/5744 [00:57<43:09,  2.17it/s]  2%|▏         | 118/5744 [00:58<43:17,  2.17it/s]  2%|▏         | 119/5744 [00:58<42:58,  2.18it/s]  2%|▏         | 120/5744 [00:59<42:32,  2.20it/s]  2%|▏         | 121/5744 [00:59<42:44,  2.19it/s]  2%|▏         | 122/5744 [01:00<42:41,  2.19it/s]  2%|▏         | 123/5744 [01:00<42:58,  2.18it/s]  2%|▏         | 124/5744 [01:01<43:00,  2.18it/s]  2%|▏         | 125/5744 [01:01<43:01,  2.18it/s]  2%|▏         | 126/5744 [01:02<42:48,  2.19it/s]  2%|▏         | 127/5744 [01:02<42:47,  2.19it/s]  2%|▏         | 128/5744 [01:03<42:40,  2.19it/s]  2%|▏         | 129/5744 [01:03<43:00,  2.18it/s]  2%|▏         | 130/5744 [01:03<42:56,  2.18it/s]  2%|▏         | 131/5744 [01:04<42:48,  2.19it/s]  2%|▏         | 132/5744 [01:04<42:35,  2.20it/s]  2%|▏         | 133/5744 [01:05<42:32,  2.20it/s]  2%|▏         | 134/5744 [01:05<42:34,  2.20it/s]  2%|▏         | 135/5744 [01:06<42:25,  2.20it/s]  2%|▏         | 136/5744 [01:07<55:24,  1.69it/s]  2%|▏         | 137/5744 [01:07<51:35,  1.81it/s]  2%|▏         | 138/5744 [01:08<48:51,  1.91it/s]  2%|▏         | 139/5744 [01:08<47:03,  1.99it/s]  2%|▏         | 140/5744 [01:08<45:55,  2.03it/s]  2%|▏         | 141/5744 [01:09<45:04,  2.07it/s]  2%|▏         | 142/5744 [01:09<44:41,  2.09it/s]  2%|▏         | 143/5744 [01:10<44:05,  2.12it/s]  3%|▎         | 144/5744 [01:10<43:42,  2.14it/s]  3%|▎         | 145/5744 [01:11<43:42,  2.14it/s]  3%|▎         | 146/5744 [01:11<43:27,  2.15it/s]  3%|▎         | 147/5744 [01:12<43:16,  2.16it/s]  3%|▎         | 148/5744 [01:12<43:03,  2.17it/s]  3%|▎         | 149/5744 [01:13<42:54,  2.17it/s]  3%|▎         | 150/5744 [01:13<43:16,  2.15it/s]  3%|▎         | 151/5744 [01:14<42:57,  2.17it/s]  3%|▎         | 152/5744 [01:14<42:39,  2.18it/s]  3%|▎         | 153/5744 [01:14<42:40,  2.18it/s]  3%|▎         | 154/5744 [01:15<42:39,  2.18it/s]  3%|▎         | 155/5744 [01:15<42:40,  2.18it/s]  3%|▎         | 156/5744 [01:16<42:47,  2.18it/s]  3%|▎         | 157/5744 [01:16<42:50,  2.17it/s]  3%|▎         | 158/5744 [01:17<42:50,  2.17it/s]  3%|▎         | 159/5744 [01:17<42:38,  2.18it/s]  3%|▎         | 160/5744 [01:18<42:36,  2.18it/s]  3%|▎         | 161/5744 [01:18<42:55,  2.17it/s]
