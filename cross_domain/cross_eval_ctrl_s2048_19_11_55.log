@@ -1,0 +1,69 @@
+/root/miniconda3/lib/python3.12/site-packages/albumentations/__init__.py:24: UserWarning: A new version of Albumentations is available: 2.0.8 (you have 1.4.21). Upgrade using: pip install -U albumentations. To disable automatic update checks, set the environment variable NO_ALBUMENTATIONS_UPDATE to 1.
+  check_for_updates()
+['in_channels', 'out_channels', 'kernel_size', 'stride', 'padding', 'dilation', 'groups', 'bias', 'padding_mode', 'device', 'dtype']
+spatial_count=0 keep_stride_count=0
+[dataset/__init__] skip FWABlendDataset: RuntimeError: Unable to open preprocessing/dlib_tools/shape_predictor_81_face_landmarks.dat
+[dataset/__init__] skip FWABlendDataset: RuntimeError: Unable to open preprocessing/dlib_tools/shape_predictor_81_face_landmarks.dat
+[warn] missing swa /nonexistent_swa.pth
+Evaluating 7 checkpoints on ['Celeb-DF-v2', 'DFDC', 'FaceShifter', 'DeepFakeDetection', 'DFDCP']
+== step_11487 ==
+    Celeb-DF-v2: auc=0.714487 video_auc=0.761219
+    DFDC: auc=0.683576 video_auc=0.700729
+    FaceShifter: auc=0.608052 video_auc=0.578367
+    DeepFakeDetection: auc=0.815069 video_auc=0.865205
+    DFDCP: auc=0.702802 video_auc=0.727045
+  (saved step_11487 -> /root/autodl-tmp/cross_domain_ctrl_s2048_19_11_55.json)
+== step_14359 ==
+    Celeb-DF-v2: auc=0.704661 video_auc=0.750099
+    DFDC: auc=0.714343 video_auc=0.739929
+    FaceShifter: auc=0.693825 video_auc=0.696480
+    DeepFakeDetection: auc=0.850051 video_auc=0.902446
+    DFDCP: auc=0.727230 video_auc=0.744715
+  (saved step_14359 -> /root/autodl-tmp/cross_domain_ctrl_s2048_19_11_55.json)
+== step_17231 ==
+    Celeb-DF-v2: auc=0.721916 video_auc=0.763070
+    DFDC: auc=0.700952 video_auc=0.719073
+    FaceShifter: auc=0.661677 video_auc=0.656735
+    DeepFakeDetection: auc=0.821364 video_auc=0.872047
+    DFDCP: auc=0.739412 video_auc=0.763219
+  (saved step_17231 -> /root/autodl-tmp/cross_domain_ctrl_s2048_19_11_55.json)
+== step_20103 ==
+    Celeb-DF-v2: auc=0.704069 video_auc=0.749736
+    DFDC: auc=0.694163 video_auc=0.718179
+    FaceShifter: auc=0.661683 video_auc=0.665153
+    DeepFakeDetection: auc=0.819595 video_auc=0.875671
+    DFDCP: auc=0.726003 video_auc=0.751669
+  (saved step_20103 -> /root/autodl-tmp/cross_domain_ctrl_s2048_19_11_55.json)
+== step_22975 ==
+    Celeb-DF-v2: auc=0.703451 video_auc=0.748381
+    DFDC: auc=0.696207 video_auc=0.720834
+    FaceShifter: auc=0.660967 video_auc=0.667806
+    DeepFakeDetection: auc=0.827568 video_auc=0.880590
+    DFDCP: auc=0.720546 video_auc=0.745662
+  (saved step_22975 -> /root/autodl-tmp/cross_domain_ctrl_s2048_19_11_55.json)
+== step_5743 ==
+    Celeb-DF-v2: auc=0.743560 video_auc=0.813615
+    DFDC: auc=0.704925 video_auc=0.729570
+    FaceShifter: auc=0.616065 video_auc=0.603061
+    DeepFakeDetection: auc=0.831308 video_auc=0.885608
+    DFDCP: auc=0.742576 video_auc=0.774346
+  (saved step_5743 -> /root/autodl-tmp/cross_domain_ctrl_s2048_19_11_55.json)
+== step_8615 ==
+    Celeb-DF-v2: auc=0.707952 video_auc=0.755321
+    DFDC: auc=0.720759 video_auc=0.745527
+    FaceShifter: auc=0.636402 video_auc=0.650612
+    DeepFakeDetection: auc=0.833316 video_auc=0.879185
+    DFDCP: auc=0.730957 video_auc=0.767062
+  (saved step_8615 -> /root/autodl-tmp/cross_domain_ctrl_s2048_19_11_55.json)
+
+Saved -> /root/autodl-tmp/cross_domain_ctrl_s2048_19_11_55.json
+
+=== SUMMARY (auc) ===
+ckpt         Celeb-DF-v2        DFDC               FaceShifter        DeepFakeDetection  DFDCP             
+step_11487   0.714487           0.683576           0.608052           0.815069           0.702802          
+step_14359   0.704661           0.714343           0.693825           0.850051           0.727230          
+step_17231   0.721916           0.700952           0.661677           0.821364           0.739412          
+step_20103   0.704069           0.694163           0.661683           0.819595           0.726003          
+step_22975   0.703451           0.696207           0.660967           0.827568           0.720546          
+step_5743    0.743560           0.704925           0.616065           0.831308           0.742576          
+step_8615    0.707952           0.720759           0.636402           0.833316           0.730957          
