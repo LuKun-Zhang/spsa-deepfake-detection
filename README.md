@@ -27,7 +27,7 @@ Three pointers that may save you time:
   a checkpoint-format mismatch between training and evaluation, and one run whose intermediate
   checkpoints were lost and whose numbers survive only as frozen JSON.
 - **[Evaluation protocol](#evaluation-protocol)** — what "7-point mean" means here, and why the
-  paper reports the trajectory mean rather than the best checkpoint.
+  paper reports the trajectory mean rather than the best checkpoint
 
 Questions about the code, the protocol, or any number are very welcome.
 
