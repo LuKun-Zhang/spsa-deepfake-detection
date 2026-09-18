@@ -55,7 +55,7 @@ for cross-domain deepfake detection. The paper makes three points:
 2. A lightweight **Split-Pool Self-Attention (SPSA)** module — **66.8K parameters, 0.14% of the
    model** — is added to the reconstruction decoder. In controlled three-seed experiments
    **neither SPSA nor SWA helps independently** (SPSA alone **−0.38**, SWA alone **−0.39**),
-   while their **combination** raises trajectory-mean AUC by **+1.27 points** (SPSA's net
+   while their **combination** improves trajectory-mean AUC by **+1.27 points** (SPSA's net
    contribution on top of SWA is **+1.66**). What repeats is the **sign, under three different
    settings, each 3/3 seeds**: **+1.27** controlled (§4.2), **+1.02** under the official
    six-round protocol (§4.4), and **+1.23** on the deployed checkpoint (§4.6). The gain also
