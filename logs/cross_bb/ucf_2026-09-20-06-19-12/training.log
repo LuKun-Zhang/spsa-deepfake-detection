@@ -1,0 +1,391 @@
+2026-09-20 06:19:12,768 - INFO - Save log to /root/cross_bb_logs/ucf_2026-09-20-06-19-12
+2026-09-20 06:19:12,768 - INFO - --------------- Configuration ---------------
+2026-09-20 06:19:12,769 - INFO - Parameters: 
+log_dir: /root/cross_bb_logs
+pretrained: ./training/pretrained/_noop_imagenet.pth
+model_name: ucf
+backbone_name: swinv2_tiny
+encoder_feat_dim: 512
+backbone_config: {'mode': 'adjust_channel', 'num_classes': 2, 'inc': 3, 'dropout': False}
+all_dataset: ['FaceForensics++', 'FF-F2F', 'FF-DF', 'FF-FS', 'FF-NT', 'FaceShifter', 'DeepFakeDetection', 'Celeb-DF-v1', 'Celeb-DF-v2', 'DFDCP', 'DFDC', 'DeeperForensics-1.0', 'UADFV']
+train_dataset: ['FF-F2F', 'FF-DF', 'FF-FS', 'FF-NT']
+test_dataset: ['Celeb-DF-v2']
+dataset_type: pair
+compression: c23
+train_batchSize: 16
+test_batchSize: 32
+workers: 8
+frame_num: {'train': 32, 'test': 32}
+resolution: 256
+with_mask: False
+with_landmark: False
+save_feat: True
+label_dict: {'DFD_fake': 1, 'DFD_real': 0, 'FaceShifter': 1, 'FF-FH': 1, 'FF-DF': 1, 'FF-F2F': 2, 'FF-FS': 3, 'FF-NT': 4, 'FF-real': 0, 'CelebDFv1_real': 0, 'CelebDFv1_fake': 1, 'CelebDFv2_real': 0, 'CelebDFv2_fake': 1, 'DFDCP_Real': 0, 'DFDCP_FakeA': 1, 'DFDCP_FakeB': 1, 'DFDC_Fake': 1, 'DFDC_Real': 0, 'DF_fake': 1, 'DF_real': 0, 'UADFV_Fake': 1, 'UADFV_Real': 0, 'roop_Fake': 1, 'roop_Real': 0}
+use_data_augmentation: True
+data_aug: {'flip_prob': 0.5, 'rotate_prob': 0.5, 'rotate_limit': [-10, 10], 'blur_prob': 0.5, 'blur_limit': [3, 7], 'brightness_prob': 0.5, 'brightness_limit': [-0.1, 0.1], 'contrast_limit': [-0.1, 0.1], 'quality_lower': 40, 'quality_upper': 100}
+mean: [0.5, 0.5, 0.5]
+std: [0.5, 0.5, 0.5]
+optimizer: {'type': 'adam', 'adam': {'lr': 0.0002, 'beta1': 0.9, 'beta2': 0.999, 'eps': 1e-08, 'weight_decay': 0.0005, 'amsgrad': False}, 'sgd': {'lr': 0.0002, 'momentum': 0.9, 'weight_decay': 0.0005}}
+lr_scheduler: cosine
+nEpochs: 3
+start_epoch: 0
+save_epoch: 1
+rec_iter: 100
+logdir: ./logs
+manualSeed: 2048
+save_ckpt: True
+loss_func: {'cls_loss': 'cross_entropy', 'spe_loss': 'cross_entropy', 'con_loss': 'contrastive_regularization', 'rec_loss': 'l1loss', 'cons2_loss': 'cross_method_consistency'}
+cross_method_consistency: False
+consistency_weight: 0.1
+consistency_temperature: 0.1
+losstype: None
+metric_scoring: auc
+cuda: True
+cudnn: True
+lr_T_max: 3
+lr_eta_min: 1e-06
+SWA: True
+swa_start: 2
+spsa: True
+rng_neutral_build: True
+mode: train
+lmdb: False
+dry_run: False
+rgb_dir: ./datasets/rgb
+lmdb_dir: ./datasets/lmdb
+dataset_json_folder: ./preprocessing/dataset_json
+save_avg: True
+local_rank: 0
+ddp: False
+
+2026-09-20 06:19:14,138 - INFO - Loading pretrained weights from Hugging Face hub (timm/swinv2_tiny_window8_256.ms_in1k)
+2026-09-20 06:19:14,652 - INFO - HTTP Request: HEAD https://hf-mirror.com/timm/swinv2_tiny_window8_256.ms_in1k/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-09-20 06:19:14,652 - INFO - [timm/swinv2_tiny_window8_256.ms_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2026-09-20 06:19:14,669 - INFO - SwinV2-Tiny built: feat_dim=768 (expect 768)
+2026-09-20 06:19:14,675 - INFO - Load pretrained model successfully!
+2026-09-20 06:19:15,719 - INFO - Loading pretrained weights from Hugging Face hub (timm/swinv2_tiny_window8_256.ms_in1k)
+2026-09-20 06:19:15,966 - INFO - HTTP Request: HEAD https://hf-mirror.com/timm/swinv2_tiny_window8_256.ms_in1k/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-09-20 06:19:15,967 - INFO - [timm/swinv2_tiny_window8_256.ms_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2026-09-20 06:19:15,980 - INFO - SwinV2-Tiny built: feat_dim=768 (expect 768)
+2026-09-20 06:19:15,984 - INFO - Load pretrained model successfully!
+2026-09-20 06:19:16,373 - INFO - SWA window widths: 1
+2026-09-20 06:19:16,410 - INFO - ===> Epoch[0] start!
+2026-09-20 06:19:16,441 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/train/FF-F2F,FF-DF,FF-FS,FF-NT/data_dict_train.pickle
+2026-09-20 06:19:17,370 - INFO - MEMDBG iter0 start alloc=0.45GB reserved=0.46GB
+2026-09-20 06:19:19,312 - INFO - Iter: 0    training-loss, overall: 2.0289535522460938    training-loss, common: 0.6930851340293884    training-loss, specific: 1.6151902675628662    training-loss, reconstruction: 1.9424567222595215    training-loss, contrastive: 11.832244873046875    
+2026-09-20 06:19:19,317 - INFO - Iter: 0    training-metric, acc: 0.5    training-metric, acc_spe: 0.1875    training-metric, auc: 0.47265625    training-metric, eer: 0.5    training-metric, ap: 0.5311441806452695    
+2026-09-20 06:19:19,317 - INFO - MEMDBG iter0 end alloc=1.28GB peak=14.44GB
+2026-09-20 06:19:19,319 - INFO - MEMDBG iter1 start alloc=1.28GB reserved=7.32GB
+2026-09-20 06:19:19,947 - INFO - MEMDBG iter1 end alloc=1.31GB peak=14.61GB
+2026-09-20 06:19:19,956 - INFO - MEMDBG iter2 start alloc=1.26GB reserved=15.14GB
+2026-09-20 06:19:20,582 - INFO - MEMDBG iter2 end alloc=1.28GB peak=14.61GB
+2026-09-20 06:19:20,585 - INFO - MEMDBG iter3 start alloc=1.28GB reserved=15.14GB
+2026-09-20 06:19:21,220 - INFO - MEMDBG iter3 end alloc=1.30GB peak=14.61GB
+2026-09-20 06:22:32,905 - INFO - Iter: 300    training-loss, overall: 1.740821123123169    training-loss, common: 0.6945163011550903    training-loss, specific: 1.4326967000961304    training-loss, reconstruction: 1.1368441581726074    training-loss, contrastive: 11.239645004272461    
+2026-09-20 06:22:32,905 - INFO - Iter: 300    training-metric, acc: 0.49854166666666666    training-metric, acc_spe: 0.49875    training-metric, auc: 0.501640625    training-metric, eer: 0.49354166666666666    training-metric, ap: 0.5508515471048713    
+2026-09-20 06:25:47,518 - INFO - Iter: 600    training-loss, overall: 1.614401936531067    training-loss, common: 0.6940667033195496    training-loss, specific: 1.430454134941101    training-loss, reconstruction: 0.722730278968811    training-loss, contrastive: 11.209405899047852    
+2026-09-20 06:25:47,519 - INFO - Iter: 600    training-metric, acc: 0.5003125    training-metric, acc_spe: 0.5    training-metric, auc: 0.49867838541666665    training-metric, eer: 0.4839583333333333    training-metric, ap: 0.5478058772521023    
+2026-09-20 06:29:01,844 - INFO - Iter: 900    training-loss, overall: 1.592383861541748    training-loss, common: 0.6939318776130676    training-loss, specific: 1.4230749607086182    training-loss, reconstruction: 0.6555279493331909    training-loss, contrastive: 11.189725875854492    
+2026-09-20 06:29:01,844 - INFO - Iter: 900    training-metric, acc: 0.49416666666666664    training-metric, acc_spe: 0.5    training-metric, auc: 0.4973046875    training-metric, eer: 0.4979166666666667    training-metric, ap: 0.5439845378808742    
+2026-09-20 06:32:15,216 - INFO - Iter: 1200    training-loss, overall: 1.5821601152420044    training-loss, common: 0.6935369372367859    training-loss, specific: 1.4227757453918457    training-loss, reconstruction: 0.6136073470115662    training-loss, contrastive: 11.245260238647461    
+2026-09-20 06:32:15,216 - INFO - Iter: 1200    training-metric, acc: 0.5061458333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.5085416666666667    training-metric, eer: 0.48125    training-metric, ap: 0.5538113210118264    
+2026-09-20 06:35:26,802 - INFO - Iter: 1500    training-loss, overall: 1.5672993659973145    training-loss, common: 0.6932593584060669    training-loss, specific: 1.4202167987823486    training-loss, reconstruction: 0.5762390494346619    training-loss, contrastive: 11.182916641235352    
+2026-09-20 06:35:26,802 - INFO - Iter: 1500    training-metric, acc: 0.5060416666666666    training-metric, acc_spe: 0.5    training-metric, auc: 0.50943359375    training-metric, eer: 0.488125    training-metric, ap: 0.5581182812845785    
+2026-09-20 06:38:41,535 - INFO - Iter: 1800    training-loss, overall: 1.5599048137664795    training-loss, common: 0.6933512091636658    training-loss, specific: 1.4211481809616089    training-loss, reconstruction: 0.5416988730430603    training-loss, contrastive: 11.238574028015137    
+2026-09-20 06:38:41,535 - INFO - Iter: 1800    training-metric, acc: 0.5047916666666666    training-metric, acc_spe: 0.5    training-metric, auc: 0.5037434895833334    training-metric, eer: 0.48833333333333334    training-metric, ap: 0.5466626444885887    
+2026-09-20 06:41:56,126 - INFO - Iter: 2100    training-loss, overall: 1.5482474565505981    training-loss, common: 0.6934946775436401    training-loss, specific: 1.4240062236785889    training-loss, reconstruction: 0.520424485206604    training-loss, contrastive: 11.124488830566406    
+2026-09-20 06:41:56,126 - INFO - Iter: 2100    training-metric, acc: 0.4948958333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.49926432291666667    training-metric, eer: 0.49916666666666665    training-metric, ap: 0.5455479735487768    
+2026-09-20 06:45:09,227 - INFO - Iter: 2400    training-loss, overall: 1.5441040992736816    training-loss, common: 0.6933544874191284    training-loss, specific: 1.4241366386413574    training-loss, reconstruction: 0.5015655755996704    training-loss, contrastive: 11.157320022583008    
+2026-09-20 06:45:09,227 - INFO - Iter: 2400    training-metric, acc: 0.4998958333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.49663411458333334    training-metric, eer: 0.5    training-metric, ap: 0.5461743784195016    
+2026-09-20 06:48:24,278 - INFO - Iter: 2700    training-loss, overall: 1.5397049188613892    training-loss, common: 0.6933751702308655    training-loss, specific: 1.420822024345398    training-loss, reconstruction: 0.48684293031692505    training-loss, contrastive: 11.16388988494873    
+2026-09-20 06:48:24,279 - INFO - Iter: 2700    training-metric, acc: 0.50375    training-metric, acc_spe: 0.5    training-metric, auc: 0.50123046875    training-metric, eer: 0.49375    training-metric, ap: 0.549119192524482    
+2026-09-20 06:51:38,641 - INFO - Iter: 3000    training-loss, overall: 1.529219388961792    training-loss, common: 0.6930553317070007    training-loss, specific: 1.4224581718444824    training-loss, reconstruction: 0.47319188714027405    training-loss, contrastive: 11.03920841217041    
+2026-09-20 06:51:38,642 - INFO - Iter: 3000    training-metric, acc: 0.508125    training-metric, acc_spe: 0.5    training-metric, auc: 0.5075651041666667    training-metric, eer: 0.48854166666666665    training-metric, ap: 0.5586165601969829    
+2026-09-20 06:54:52,873 - INFO - Iter: 3300    training-loss, overall: 1.5317447185516357    training-loss, common: 0.6931395530700684    training-loss, specific: 1.42246675491333    training-loss, reconstruction: 0.46488887071609497    training-loss, contrastive: 11.137822151184082    
+2026-09-20 06:54:52,873 - INFO - Iter: 3300    training-metric, acc: 0.506875    training-metric, acc_spe: 0.5    training-metric, auc: 0.5075455729166667    training-metric, eer: 0.48541666666666666    training-metric, ap: 0.553401232439306    
+2026-09-20 06:58:06,921 - INFO - Iter: 3600    training-loss, overall: 1.5329453945159912    training-loss, common: 0.693101167678833    training-loss, specific: 1.424261212348938    training-loss, reconstruction: 0.45702117681503296    training-loss, contrastive: 11.206225395202637    
+2026-09-20 06:58:06,922 - INFO - Iter: 3600    training-metric, acc: 0.5017708333333334    training-metric, acc_spe: 0.5    training-metric, auc: 0.5061783854166667    training-metric, eer: 0.48791666666666667    training-metric, ap: 0.5583666202075926    
+2026-09-20 07:01:21,622 - INFO - Iter: 3900    training-loss, overall: 1.5260720252990723    training-loss, common: 0.6933737397193909    training-loss, specific: 1.421017050743103    training-loss, reconstruction: 0.4470284581184387    training-loss, contrastive: 11.129768371582031    
+2026-09-20 07:01:21,622 - INFO - Iter: 3900    training-metric, acc: 0.4997916666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.50146484375    training-metric, eer: 0.4995833333333333    training-metric, ap: 0.5524791326789061    
+2026-09-20 07:04:36,599 - INFO - Iter: 4200    training-loss, overall: 1.5255430936813354    training-loss, common: 0.6933448314666748    training-loss, specific: 1.4259223937988281    training-loss, reconstruction: 0.4377862215042114    training-loss, contrastive: 11.165392875671387    
+2026-09-20 07:04:36,599 - INFO - Iter: 4200    training-metric, acc: 0.49666666666666665    training-metric, acc_spe: 0.5    training-metric, auc: 0.49266927083333334    training-metric, eer: 0.5014583333333333    training-metric, ap: 0.5434195843661928    
+2026-09-20 07:07:50,760 - INFO - Iter: 4500    training-loss, overall: 1.5213711261749268    training-loss, common: 0.6930714249610901    training-loss, specific: 1.4208109378814697    training-loss, reconstruction: 0.42935216426849365    training-loss, contrastive: 11.1482572555542    
+2026-09-20 07:07:50,761 - INFO - Iter: 4500    training-metric, acc: 0.5069791666666666    training-metric, acc_spe: 0.5    training-metric, auc: 0.5120247395833334    training-metric, eer: 0.4845833333333333    training-metric, ap: 0.5562389510609623    
+2026-09-20 07:11:06,371 - INFO - Iter: 4800    training-loss, overall: 1.520370364189148    training-loss, common: 0.6931301951408386    training-loss, specific: 1.4264532327651978    training-loss, reconstruction: 0.4252532124519348    training-loss, contrastive: 11.140365600585938    
+2026-09-20 07:11:06,372 - INFO - Iter: 4800    training-metric, acc: 0.5076041666666666    training-metric, acc_spe: 0.5    training-metric, auc: 0.5103125    training-metric, eer: 0.48083333333333333    training-metric, ap: 0.5571776548455124    
+2026-09-20 07:14:21,188 - INFO - Iter: 5100    training-loss, overall: 1.5151312351226807    training-loss, common: 0.6931795477867126    training-loss, specific: 1.4226821660995483    training-loss, reconstruction: 0.41815513372421265    training-loss, contrastive: 11.084745407104492    
+2026-09-20 07:14:21,188 - INFO - Iter: 5100    training-metric, acc: 0.5065625    training-metric, acc_spe: 0.5    training-metric, auc: 0.5056901041666667    training-metric, eer: 0.48604166666666665    training-metric, ap: 0.549131953241148    
+2026-09-20 07:17:35,955 - INFO - Iter: 5400    training-loss, overall: 1.5145419836044312    training-loss, common: 0.6934688687324524    training-loss, specific: 1.4208892583847046    training-loss, reconstruction: 0.4121311604976654    training-loss, contrastive: 11.106890678405762    
+2026-09-20 07:17:35,955 - INFO - Iter: 5400    training-metric, acc: 0.49135416666666665    training-metric, acc_spe: 0.5    training-metric, auc: 0.49376953125    training-metric, eer: 0.50625    training-metric, ap: 0.5478909989083244    
+2026-09-20 07:20:50,014 - INFO - Iter: 5700    training-loss, overall: 1.515669584274292    training-loss, common: 0.6932297348976135    training-loss, specific: 1.418339729309082    training-loss, reconstruction: 0.40999022126197815    training-loss, contrastive: 11.152167320251465    
+2026-09-20 07:20:50,014 - INFO - Iter: 5700    training-metric, acc: 0.495625    training-metric, acc_spe: 0.5    training-metric, auc: 0.49802734375    training-metric, eer: 0.4897916666666667    training-metric, ap: 0.545541224823094    
+2026-09-20 07:21:19,331 - INFO - ===> Test start!
+2026-09-20 07:21:19,335 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/data_dict_test.pickle
+2026-09-20 07:21:43,921 - INFO - Checkpoint saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/ckpt_best.pth, current ckpt is 0+5743
+2026-09-20 07:21:43,921 - INFO - Metrics saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/metric_dict_best.pickle
+2026-09-20 07:21:43,923 - INFO - dataset: Celeb-DF-v2    step: 5743    testing-loss, common: 0.6936265826225281    
+2026-09-20 07:21:43,927 - INFO - dataset: Celeb-DF-v2    step: 5743    testing-metric, acc: 0.3517661388550548    testing-metric, auc: 0.5166556857124028    testing-metric, eer: 0.48576512455516013    testing-metric, ap: 0.6868910614310695    testing-metric, video_auc: 0.5135327164573695    testing-metric, acc_real:0.9813167259786477; acc_fake:0.024166666666666666
+2026-09-20 07:21:44,109 - INFO - Checkpoint saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/avg/ckpt_best.pth, current ckpt is 0+5743
+2026-09-20 07:21:44,110 - INFO - Metrics saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/avg/metric_dict_best.pickle
+2026-09-20 07:21:44,113 - INFO - dataset: avg    step: 5743    testing-metric, acc: 0.3517661388550548    testing-metric, auc: 0.5166556857124028    testing-metric, eer: 0.48576512455516013    testing-metric, ap: 0.6868910614310695    testing-metric, video_auc: 0.5135327164573695    
+2026-09-20 07:21:44,113 - INFO - ===> Test Done!
+2026-09-20 07:21:44,298 - INFO - Step ckpt saved: step_5743.pth
+2026-09-20 07:21:44,722 - INFO - ===> Epoch[0] end with testing auc: 
+================================ Each dataset best metric ================================ 
+| Celeb-DF-v2:  auc=0.5166556857124028 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg auc: 0.5166556857124028 | 
+| Celeb-DF-v2: 0.5166556857124028 | 
+=============================================================================================!
+2026-09-20 07:21:44,723 - INFO - ===> Epoch[0] end, current lr = 0.000200
+2026-09-20 07:21:44,724 - INFO - ===> Epoch[1] start!
+2026-09-20 07:21:44,775 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/train/FF-F2F,FF-DF,FF-FS,FF-NT/data_dict_train.pickle
+2026-09-20 07:21:45,965 - INFO - MEMDBG iter0 start alloc=1.20GB reserved=2.51GB
+2026-09-20 07:21:46,911 - INFO - Iter: 5744    training-loss, overall: 1.5901453495025635    training-loss, common: 0.6919082403182983    training-loss, specific: 1.389723300933838    training-loss, reconstruction: 0.48118725419044495    training-loss, contrastive: 12.298171997070312    
+2026-09-20 07:21:46,911 - INFO - Iter: 5744    training-metric, acc: 0.5    training-metric, acc_spe: 0.5    training-metric, auc: 0.51171875    training-metric, eer: 0.5625    training-metric, ap: 0.5150002935310941    
+2026-09-20 07:21:46,915 - INFO - MEMDBG iter0 end alloc=1.28GB peak=14.61GB
+2026-09-20 07:21:46,921 - INFO - MEMDBG iter1 start alloc=1.28GB reserved=15.08GB
+2026-09-20 07:21:47,840 - INFO - MEMDBG iter1 end alloc=1.30GB peak=14.61GB
+2026-09-20 07:21:47,845 - INFO - MEMDBG iter2 start alloc=1.25GB reserved=15.08GB
+2026-09-20 07:21:48,472 - INFO - MEMDBG iter2 end alloc=1.28GB peak=14.61GB
+2026-09-20 07:21:48,474 - INFO - MEMDBG iter3 start alloc=1.28GB reserved=15.08GB
+2026-09-20 07:21:49,089 - INFO - MEMDBG iter3 end alloc=1.30GB peak=14.61GB
+2026-09-20 07:25:02,718 - INFO - Iter: 6044    training-loss, overall: 1.5137349367141724    training-loss, common: 0.6932309865951538    training-loss, specific: 1.4174141883850098    training-loss, reconstruction: 0.39321812987327576    training-loss, contrastive: 11.21594524383545    
+2026-09-20 07:25:02,718 - INFO - Iter: 6044    training-metric, acc: 0.5047916666666666    training-metric, acc_spe: 0.5    training-metric, auc: 0.5011002604166667    training-metric, eer: 0.4922916666666667    training-metric, ap: 0.5507219426898982    
+2026-09-20 07:28:18,202 - INFO - Iter: 6344    training-loss, overall: 1.503461480140686    training-loss, common: 0.6932633519172668    training-loss, specific: 1.4224963188171387    training-loss, reconstruction: 0.39127975702285767    training-loss, contrastive: 11.011296272277832    
+2026-09-20 07:28:18,202 - INFO - Iter: 6344    training-metric, acc: 0.5010416666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.50119140625    training-metric, eer: 0.4891666666666667    training-metric, ap: 0.5488181378843507    
+2026-09-20 07:31:33,196 - INFO - Iter: 6644    training-loss, overall: 1.505647897720337    training-loss, common: 0.6931021809577942    training-loss, specific: 1.418609619140625    training-loss, reconstruction: 0.39101195335388184    training-loss, contrastive: 11.067625999450684    
+2026-09-20 07:31:33,196 - INFO - Iter: 6644    training-metric, acc: 0.5040625    training-metric, acc_spe: 0.5    training-metric, auc: 0.509765625    training-metric, eer: 0.4820833333333333    training-metric, ap: 0.5572125051361579    
+2026-09-20 07:34:47,523 - INFO - Iter: 6944    training-loss, overall: 1.5035748481750488    training-loss, common: 0.693246603012085    training-loss, specific: 1.4218838214874268    training-loss, reconstruction: 0.3857192397117615    training-loss, contrastive: 11.048479080200195    
+2026-09-20 07:34:47,524 - INFO - Iter: 6944    training-metric, acc: 0.4996875    training-metric, acc_spe: 0.5    training-metric, auc: 0.50380859375    training-metric, eer: 0.49020833333333336    training-metric, ap: 0.5542398705742854    
+2026-09-20 07:38:01,260 - INFO - Iter: 7244    training-loss, overall: 1.5038838386535645    training-loss, common: 0.6930704712867737    training-loss, specific: 1.4201018810272217    training-loss, reconstruction: 0.3812442123889923    training-loss, contrastive: 11.08859920501709    
+2026-09-20 07:38:01,261 - INFO - Iter: 7244    training-metric, acc: 0.5064583333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.50798828125    training-metric, eer: 0.483125    training-metric, ap: 0.5559906281705064    
+2026-09-20 07:41:16,140 - INFO - Iter: 7544    training-loss, overall: 1.5090795755386353    training-loss, common: 0.6932601928710938    training-loss, specific: 1.4194625616073608    training-loss, reconstruction: 0.3789384365081787    training-loss, contrastive: 11.20384693145752    
+2026-09-20 07:41:16,140 - INFO - Iter: 7544    training-metric, acc: 0.49947916666666664    training-metric, acc_spe: 0.5    training-metric, auc: 0.50271484375    training-metric, eer: 0.493125    training-metric, ap: 0.5464017979002826    
+2026-09-20 07:44:31,047 - INFO - Iter: 7844    training-loss, overall: 1.4974521398544312    training-loss, common: 0.6931968331336975    training-loss, specific: 1.4200119972229004    training-loss, reconstruction: 0.37945449352264404    training-loss, contrastive: 10.968338012695312    
+2026-09-20 07:44:31,048 - INFO - Iter: 7844    training-metric, acc: 0.5064583333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.5082161458333333    training-metric, eer: 0.489375    training-metric, ap: 0.5518730840239788    
+2026-09-20 07:47:46,668 - INFO - Iter: 8144    training-loss, overall: 1.5001736879348755    training-loss, common: 0.6933382749557495    training-loss, specific: 1.422256350517273    training-loss, reconstruction: 0.37415221333503723    training-loss, contrastive: 11.047287940979004    
+2026-09-20 07:47:46,669 - INFO - Iter: 8144    training-metric, acc: 0.49614583333333334    training-metric, acc_spe: 0.5    training-metric, auc: 0.49389322916666667    training-metric, eer: 0.498125    training-metric, ap: 0.5446424576652458    
+2026-09-20 07:51:01,355 - INFO - Iter: 8444    training-loss, overall: 1.502624750137329    training-loss, common: 0.693194568157196    training-loss, specific: 1.4262688159942627    training-loss, reconstruction: 0.37221986055374146    training-loss, contrastive: 11.102747917175293    
+2026-09-20 07:51:01,355 - INFO - Iter: 8444    training-metric, acc: 0.5053125    training-metric, acc_spe: 0.5    training-metric, auc: 0.5045963541666667    training-metric, eer: 0.488125    training-metric, ap: 0.555169771799822    
+2026-09-20 07:52:53,113 - INFO - ===> Test start!
+2026-09-20 07:52:53,118 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/data_dict_test.pickle
+2026-09-20 07:53:17,638 - INFO - Checkpoint saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/ckpt_best.pth, current ckpt is 1+2871
+2026-09-20 07:53:17,641 - INFO - Metrics saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/metric_dict_best.pickle
+2026-09-20 07:53:17,641 - INFO - dataset: Celeb-DF-v2    step: 8615    testing-loss, common: 0.6908067464828491    
+2026-09-20 07:53:17,643 - INFO - dataset: Celeb-DF-v2    step: 8615    testing-metric, acc: 0.6109013398294763    testing-metric, auc: 0.5269713654936075    testing-metric, eer: 0.4729537366548043    testing-metric, ap: 0.6661788665246884    testing-metric, video_auc: 0.5290812954395241    testing-metric, acc_real:0.21725978647686833; acc_fake:0.8157407407407408
+2026-09-20 07:53:18,015 - INFO - Checkpoint saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/avg/ckpt_best.pth, current ckpt is 1+2871
+2026-09-20 07:53:18,015 - INFO - Metrics saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/avg/metric_dict_best.pickle
+2026-09-20 07:53:18,016 - INFO - dataset: avg    step: 8615    testing-metric, acc: 0.6109013398294763    testing-metric, auc: 0.5269713654936075    testing-metric, eer: 0.4729537366548043    testing-metric, ap: 0.6661788665246884    testing-metric, video_auc: 0.5290812954395241    
+2026-09-20 07:53:18,016 - INFO - ===> Test Done!
+2026-09-20 07:53:18,205 - INFO - Step ckpt saved: step_8615.pth
+2026-09-20 07:54:41,636 - INFO - Iter: 8744    training-loss, overall: 1.5027827024459839    training-loss, common: 0.6932024955749512    training-loss, specific: 1.4211244583129883    training-loss, reconstruction: 0.3710271418094635    training-loss, contrastive: 11.123190879821777    
+2026-09-20 07:54:41,636 - INFO - Iter: 8744    training-metric, acc: 0.5022916666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.5055013020833333    training-metric, eer: 0.4891666666666667    training-metric, ap: 0.5541908172828588    
+2026-09-20 07:57:56,772 - INFO - Iter: 9044    training-loss, overall: 1.5053385496139526    training-loss, common: 0.6932297348976135    training-loss, specific: 1.4229592084884644    training-loss, reconstruction: 0.3695322573184967    training-loss, contrastive: 11.179070472717285    
+2026-09-20 07:57:56,772 - INFO - Iter: 9044    training-metric, acc: 0.5029166666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.5107486979166667    training-metric, eer: 0.4847916666666667    training-metric, ap: 0.5555217757438172    
+2026-09-20 08:01:10,443 - INFO - Iter: 9344    training-loss, overall: 1.4960533380508423    training-loss, common: 0.6933279037475586    training-loss, specific: 1.4177037477493286    training-loss, reconstruction: 0.3659241199493408    training-loss, contrastive: 11.023564338684082    
+2026-09-20 08:01:10,443 - INFO - Iter: 9344    training-metric, acc: 0.4942708333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.48809895833333333    training-metric, eer: 0.5029166666666667    training-metric, ap: 0.5383535889816986    
+2026-09-20 08:04:24,676 - INFO - Iter: 9644    training-loss, overall: 1.497404932975769    training-loss, common: 0.6932108998298645    training-loss, specific: 1.4165321588516235    training-loss, reconstruction: 0.3614891767501831    training-loss, contrastive: 11.08187198638916    
+2026-09-20 08:04:24,676 - INFO - Iter: 9644    training-metric, acc: 0.5092708333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.5107096354166667    training-metric, eer: 0.4845833333333333    training-metric, ap: 0.5580153874634212    
+2026-09-20 08:07:39,704 - INFO - Iter: 9944    training-loss, overall: 1.498536467552185    training-loss, common: 0.6932139992713928    training-loss, specific: 1.4222538471221924    training-loss, reconstruction: 0.3648511469364166    training-loss, contrastive: 11.072834014892578    
+2026-09-20 08:07:39,704 - INFO - Iter: 9944    training-metric, acc: 0.5017708333333334    training-metric, acc_spe: 0.5    training-metric, auc: 0.498125    training-metric, eer: 0.4895833333333333    training-metric, ap: 0.5436691677195598    
+2026-09-20 08:10:53,743 - INFO - Iter: 10244    training-loss, overall: 1.5003966093063354    training-loss, common: 0.6932598948478699    training-loss, specific: 1.4189385175704956    training-loss, reconstruction: 0.36542466282844543    training-loss, contrastive: 11.112314224243164    
+2026-09-20 08:10:53,743 - INFO - Iter: 10244    training-metric, acc: 0.4990625    training-metric, acc_spe: 0.5    training-metric, auc: 0.4944986979166667    training-metric, eer: 0.4945833333333333    training-metric, ap: 0.5416584234448942    
+2026-09-20 08:14:08,581 - INFO - Iter: 10544    training-loss, overall: 1.4916526079177856    training-loss, common: 0.6931695938110352    training-loss, specific: 1.4140030145645142    training-loss, reconstruction: 0.3611132800579071    training-loss, contrastive: 10.974967956542969    
+2026-09-20 08:14:08,581 - INFO - Iter: 10544    training-metric, acc: 0.49916666666666665    training-metric, acc_spe: 0.5    training-metric, auc: 0.49670572916666667    training-metric, eer: 0.49625    training-metric, ap: 0.5462723340389581    
+2026-09-20 08:17:23,954 - INFO - Iter: 10844    training-loss, overall: 1.494075059890747    training-loss, common: 0.6931633353233337    training-loss, specific: 1.4222209453582764    training-loss, reconstruction: 0.3589850664138794    training-loss, contrastive: 11.019880294799805    
+2026-09-20 08:17:23,955 - INFO - Iter: 10844    training-metric, acc: 0.5047916666666666    training-metric, acc_spe: 0.5    training-metric, auc: 0.5059309895833334    training-metric, eer: 0.4866666666666667    training-metric, ap: 0.5536530115043274    
+2026-09-20 08:20:39,304 - INFO - Iter: 11144    training-loss, overall: 1.4946708679199219    training-loss, common: 0.6933338642120361    training-loss, specific: 1.4206618070602417    training-loss, reconstruction: 0.35220062732696533    training-loss, contrastive: 11.072219848632812    
+2026-09-20 08:20:39,304 - INFO - Iter: 11144    training-metric, acc: 0.5014583333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.4967447916666667    training-metric, eer: 0.49645833333333333    training-metric, ap: 0.5457684577936096    
+2026-09-20 08:23:54,269 - INFO - Iter: 11444    training-loss, overall: 1.4933335781097412    training-loss, common: 0.6932764053344727    training-loss, specific: 1.4190715551376343    training-loss, reconstruction: 0.35292917490005493    training-loss, contrastive: 11.045431137084961    
+2026-09-20 08:23:54,270 - INFO - Iter: 11444    training-metric, acc: 0.4973958333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.495234375    training-metric, eer: 0.5045833333333334    training-metric, ap: 0.5443247855463352    
+2026-09-20 08:24:22,896 - INFO - ===> Test start!
+2026-09-20 08:24:22,901 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/data_dict_test.pickle
+2026-09-20 08:24:47,151 - INFO - Checkpoint saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/ckpt_best.pth, current ckpt is 1+5743
+2026-09-20 08:24:47,152 - INFO - Metrics saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/metric_dict_best.pickle
+2026-09-20 08:24:47,152 - INFO - dataset: Celeb-DF-v2    step: 11487    testing-loss, common: 0.6926182508468628    
+2026-09-20 08:24:47,155 - INFO - dataset: Celeb-DF-v2    step: 11487    testing-metric, acc: 0.6102923264311815    testing-metric, auc: 0.5722163734018716    testing-metric, eer: 0.4209964412811388    testing-metric, ap: 0.6910480348707404    testing-metric, video_auc: 0.5733146067415731    testing-metric, acc_real:0.33612099644128113; acc_fake:0.752962962962963
+2026-09-20 08:24:47,484 - INFO - Checkpoint saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/avg/ckpt_best.pth, current ckpt is 1+5743
+2026-09-20 08:24:47,485 - INFO - Metrics saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/avg/metric_dict_best.pickle
+2026-09-20 08:24:47,485 - INFO - dataset: avg    step: 11487    testing-metric, acc: 0.6102923264311815    testing-metric, auc: 0.5722163734018716    testing-metric, eer: 0.4209964412811388    testing-metric, ap: 0.6910480348707404    testing-metric, video_auc: 0.5733146067415731    
+2026-09-20 08:24:47,485 - INFO - ===> Test Done!
+2026-09-20 08:24:47,655 - INFO - Step ckpt saved: step_11487.pth
+2026-09-20 08:24:48,154 - INFO - ===> Epoch[1] end with testing auc: 
+================================ Each dataset best metric ================================ 
+| Celeb-DF-v2:  auc=0.5722163734018716 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg auc: 0.5722163734018716 | 
+| Celeb-DF-v2: 0.5722163734018716 | 
+=============================================================================================!
+2026-09-20 08:24:48,155 - INFO - ===> Epoch[1] end, current lr = 0.000150
+2026-09-20 08:24:48,155 - INFO - ===> Epoch[2] start!
+2026-09-20 08:24:48,208 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/train/FF-F2F,FF-DF,FF-FS,FF-NT/data_dict_train.pickle
+2026-09-20 08:24:49,352 - INFO - MEMDBG iter0 start alloc=1.21GB reserved=15.11GB
+2026-09-20 08:24:50,247 - INFO - Iter: 11488    training-loss, overall: 1.492698073387146    training-loss, common: 0.6944595575332642    training-loss, specific: 1.3538756370544434    training-loss, reconstruction: 0.35192230343818665    training-loss, contrastive: 11.145484924316406    
+2026-09-20 08:24:50,248 - INFO - Iter: 11488    training-metric, acc: 0.28125    training-metric, acc_spe: 0.5    training-metric, auc: 0.255859375    training-metric, eer: 0.6875    training-metric, ap: 0.3800644694354515    
+2026-09-20 08:24:50,251 - INFO - MEMDBG iter0 end alloc=1.28GB peak=14.61GB
+2026-09-20 08:24:50,258 - INFO - MEMDBG iter1 start alloc=1.28GB reserved=15.11GB
+2026-09-20 08:24:50,911 - INFO - MEMDBG iter1 end alloc=1.30GB peak=14.61GB
+2026-09-20 08:24:50,918 - INFO - MEMDBG iter2 start alloc=1.26GB reserved=15.11GB
+2026-09-20 08:24:51,551 - INFO - MEMDBG iter2 end alloc=1.28GB peak=14.61GB
+2026-09-20 08:24:51,553 - INFO - MEMDBG iter3 start alloc=1.28GB reserved=15.11GB
+2026-09-20 08:24:52,175 - INFO - MEMDBG iter3 end alloc=1.30GB peak=14.61GB
+2026-09-20 08:28:04,574 - INFO - Iter: 11788    training-loss, overall: 1.490006685256958    training-loss, common: 0.6931694149971008    training-loss, specific: 1.4184210300445557    training-loss, reconstruction: 0.3326602876186371    training-loss, contrastive: 11.103949546813965    
+2026-09-20 08:28:04,574 - INFO - Iter: 11788    training-metric, acc: 0.5008333333333334    training-metric, acc_spe: 0.5    training-metric, auc: 0.5009440104166667    training-metric, eer: 0.49020833333333336    training-metric, ap: 0.547241334909846    
+2026-09-20 08:31:20,318 - INFO - Iter: 12088    training-loss, overall: 1.4870309829711914    training-loss, common: 0.6930872797966003    training-loss, specific: 1.4191880226135254    training-loss, reconstruction: 0.33182114362716675    training-loss, contrastive: 11.049575805664062    
+2026-09-20 08:31:20,319 - INFO - Iter: 12088    training-metric, acc: 0.4998958333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.5137239583333333    training-metric, eer: 0.48583333333333334    training-metric, ap: 0.5579477893447726    
+2026-09-20 08:34:35,002 - INFO - Iter: 12388    training-loss, overall: 1.4825321435928345    training-loss, common: 0.6932159066200256    training-loss, specific: 1.4151630401611328    training-loss, reconstruction: 0.3293011486530304    training-loss, contrastive: 10.980183601379395    
+2026-09-20 08:34:35,002 - INFO - Iter: 12388    training-metric, acc: 0.5028125    training-metric, acc_spe: 0.5    training-metric, auc: 0.5004817708333333    training-metric, eer: 0.491875    training-metric, ap: 0.5545052391957624    
+2026-09-20 08:37:49,528 - INFO - Iter: 12688    training-loss, overall: 1.480650782585144    training-loss, common: 0.693141520023346    training-loss, specific: 1.4206891059875488    training-loss, reconstruction: 0.32800590991973877    training-loss, contrastive: 10.940773010253906    
+2026-09-20 08:37:49,529 - INFO - Iter: 12688    training-metric, acc: 0.4997916666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.50171875    training-metric, eer: 0.4947916666666667    training-metric, ap: 0.5503517061258169    
+2026-09-20 08:41:03,428 - INFO - Iter: 12988    training-loss, overall: 1.4850809574127197    training-loss, common: 0.6932134032249451    training-loss, specific: 1.4188573360443115    training-loss, reconstruction: 0.3286610543727875    training-loss, contrastive: 11.027669906616211    
+2026-09-20 08:41:03,428 - INFO - Iter: 12988    training-metric, acc: 0.5029166666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.49640625    training-metric, eer: 0.48895833333333333    training-metric, ap: 0.5445527941788652    
+2026-09-20 08:44:18,096 - INFO - Iter: 13288    training-loss, overall: 1.4835628271102905    training-loss, common: 0.6931144595146179    training-loss, specific: 1.4218307733535767    training-loss, reconstruction: 0.32800614833831787    training-loss, contrastive: 10.99726390838623    
+2026-09-20 08:44:18,097 - INFO - Iter: 13288    training-metric, acc: 0.5004166666666666    training-metric, acc_spe: 0.5    training-metric, auc: 0.5062955729166667    training-metric, eer: 0.488125    training-metric, ap: 0.5539052730229951    
+2026-09-20 08:47:33,416 - INFO - Iter: 13588    training-loss, overall: 1.4846274852752686    training-loss, common: 0.6932460069656372    training-loss, specific: 1.420682668685913    training-loss, reconstruction: 0.32826849818229675    training-loss, contrastive: 11.016644477844238    
+2026-09-20 08:47:33,417 - INFO - Iter: 13588    training-metric, acc: 0.4896875    training-metric, acc_spe: 0.5    training-metric, auc: 0.49150390625    training-metric, eer: 0.49895833333333334    training-metric, ap: 0.5396295954799889    
+2026-09-20 08:50:48,347 - INFO - Iter: 13888    training-loss, overall: 1.4847133159637451    training-loss, common: 0.6932039260864258    training-loss, specific: 1.4189515113830566    training-loss, reconstruction: 0.3267149329185486    training-loss, contrastive: 11.031998634338379    
+2026-09-20 08:50:48,347 - INFO - Iter: 13888    training-metric, acc: 0.4978125    training-metric, acc_spe: 0.5    training-metric, auc: 0.50017578125    training-metric, eer: 0.48583333333333334    training-metric, ap: 0.5463210643814443    
+2026-09-20 08:54:02,021 - INFO - Iter: 14188    training-loss, overall: 1.4874932765960693    training-loss, common: 0.693158745765686    training-loss, specific: 1.42586350440979    training-loss, reconstruction: 0.3275889754295349    training-loss, contrastive: 11.069417953491211    
+2026-09-20 08:54:02,022 - INFO - Iter: 14188    training-metric, acc: 0.495625    training-metric, acc_spe: 0.5    training-metric, auc: 0.49932942708333333    training-metric, eer: 0.4979166666666667    training-metric, ap: 0.5503869280278958    
+2026-09-20 08:55:54,017 - INFO - ===> Test start!
+2026-09-20 08:55:54,041 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/data_dict_test.pickle
+2026-09-20 08:56:18,333 - INFO - dataset: Celeb-DF-v2    step: 14359    testing-loss, common: 0.6928321719169617    
+2026-09-20 08:56:18,335 - INFO - dataset: Celeb-DF-v2    step: 14359    testing-metric, acc: 0.5366626065773447    testing-metric, auc: 0.5195952698695137    testing-metric, eer: 0.4983985765124555    testing-metric, ap: 0.6664021403615487    testing-metric, video_auc: 0.518853271645737    testing-metric, acc_real:0.4195729537366548; acc_fake:0.5975925925925926
+2026-09-20 08:56:18,335 - INFO - dataset: avg    step: 14359    testing-metric, acc: 0.5366626065773447    testing-metric, auc: 0.5195952698695137    testing-metric, eer: 0.4983985765124555    testing-metric, ap: 0.6664021403615487    testing-metric, video_auc: 0.518853271645737    
+2026-09-20 08:56:18,335 - INFO - ===> Test Done!
+2026-09-20 08:56:18,536 - INFO - Step ckpt saved: step_14359.pth
+2026-09-20 08:57:41,870 - INFO - Iter: 14488    training-loss, overall: 1.4810435771942139    training-loss, common: 0.6932182312011719    training-loss, specific: 1.4205377101898193    training-loss, reconstruction: 0.32664787769317627    training-loss, contrastive: 10.955540657043457    
+2026-09-20 08:57:41,871 - INFO - Iter: 14488    training-metric, acc: 0.49572916666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.49395182291666667    training-metric, eer: 0.5025    training-metric, ap: 0.5454801967088667    
+2026-09-20 09:00:56,568 - INFO - Iter: 14788    training-loss, overall: 1.481704592704773    training-loss, common: 0.6932192444801331    training-loss, specific: 1.4188227653503418    training-loss, reconstruction: 0.32491421699523926    training-loss, contrastive: 10.982587814331055    
+2026-09-20 09:00:56,568 - INFO - Iter: 14788    training-metric, acc: 0.5009375    training-metric, acc_spe: 0.5    training-metric, auc: 0.5018424479166667    training-metric, eer: 0.49125    training-metric, ap: 0.5522774708921843    
+2026-09-20 09:04:10,465 - INFO - Iter: 15088    training-loss, overall: 1.4795676469802856    training-loss, common: 0.6931374669075012    training-loss, specific: 1.4167214632034302    training-loss, reconstruction: 0.3243922293186188    training-loss, contrastive: 10.948819160461426    
+2026-09-20 09:04:10,466 - INFO - Iter: 15088    training-metric, acc: 0.5041666666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.5042057291666666    training-metric, eer: 0.488125    training-metric, ap: 0.5540465068695584    
+2026-09-20 09:07:23,630 - INFO - Iter: 15388    training-loss, overall: 1.4846659898757935    training-loss, common: 0.6931101679801941    training-loss, specific: 1.4158174991607666    training-loss, reconstruction: 0.3239106833934784    training-loss, contrastive: 11.056017875671387    
+2026-09-20 09:07:23,630 - INFO - Iter: 15388    training-metric, acc: 0.5086458333333334    training-metric, acc_spe: 0.5    training-metric, auc: 0.5068684895833333    training-metric, eer: 0.48875    training-metric, ap: 0.5563520996975384    
+2026-09-20 09:10:38,784 - INFO - Iter: 15688    training-loss, overall: 1.4827837944030762    training-loss, common: 0.6930701732635498    training-loss, specific: 1.419858455657959    training-loss, reconstruction: 0.32218170166015625    training-loss, contrastive: 11.021471977233887    
+2026-09-20 09:10:38,784 - INFO - Iter: 15688    training-metric, acc: 0.5022916666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.5065364583333334    training-metric, eer: 0.49    training-metric, ap: 0.5552662058329075    
+2026-09-20 09:13:53,237 - INFO - Iter: 15988    training-loss, overall: 1.4816428422927856    training-loss, common: 0.6931068301200867    training-loss, specific: 1.422454595565796    training-loss, reconstruction: 0.32261204719543457    training-loss, contrastive: 10.99014949798584    
+2026-09-20 09:13:53,237 - INFO - Iter: 15988    training-metric, acc: 0.5036458333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.50615234375    training-metric, eer: 0.490625    training-metric, ap: 0.5562346409415788    
+2026-09-20 09:17:06,607 - INFO - Iter: 16288    training-loss, overall: 1.478866457939148    training-loss, common: 0.6932979226112366    training-loss, specific: 1.4192991256713867    training-loss, reconstruction: 0.32073256373405457    training-loss, contrastive: 10.948379516601562    
+2026-09-20 09:17:06,607 - INFO - Iter: 16288    training-metric, acc: 0.49375    training-metric, acc_spe: 0.5    training-metric, auc: 0.4907942708333333    training-metric, eer: 0.4947916666666667    training-metric, ap: 0.5415618091847789    
+2026-09-20 09:20:19,916 - INFO - Iter: 16588    training-loss, overall: 1.4787036180496216    training-loss, common: 0.6931819319725037    training-loss, specific: 1.416277527809143    training-loss, reconstruction: 0.3180425465106964    training-loss, contrastive: 10.969630241394043    
+2026-09-20 09:20:19,917 - INFO - Iter: 16588    training-metric, acc: 0.49885416666666665    training-metric, acc_spe: 0.5    training-metric, auc: 0.49572265625    training-metric, eer: 0.494375    training-metric, ap: 0.5492945295999947    
+2026-09-20 09:23:33,428 - INFO - Iter: 16888    training-loss, overall: 1.4782867431640625    training-loss, common: 0.6931074857711792    training-loss, specific: 1.4240541458129883    training-loss, reconstruction: 0.3187656104564667    training-loss, contrastive: 10.94288444519043    
+2026-09-20 09:23:33,429 - INFO - Iter: 16888    training-metric, acc: 0.50375    training-metric, acc_spe: 0.5    training-metric, auc: 0.5050651041666666    training-metric, eer: 0.48770833333333335    training-metric, ap: 0.5547209608202017    
+2026-09-20 09:26:48,440 - INFO - Iter: 17188    training-loss, overall: 1.479952335357666    training-loss, common: 0.6929861307144165    training-loss, specific: 1.4187068939208984    training-loss, reconstruction: 0.3187432587146759    training-loss, contrastive: 10.98945140838623    
+2026-09-20 09:26:48,440 - INFO - Iter: 17188    training-metric, acc: 0.5096875    training-metric, acc_spe: 0.5    training-metric, auc: 0.51505859375    training-metric, eer: 0.4872916666666667    training-metric, ap: 0.5660634646887531    
+2026-09-20 09:27:16,929 - INFO - ===> Test start!
+2026-09-20 09:27:16,934 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/data_dict_test.pickle
+2026-09-20 09:27:41,223 - INFO - dataset: Celeb-DF-v2    step: 17231    testing-loss, common: 0.6937296390533447    
+2026-09-20 09:27:41,225 - INFO - dataset: Celeb-DF-v2    step: 17231    testing-metric, acc: 0.42795371498172957    testing-metric, auc: 0.5000856810992487    testing-metric, eer: 0.4918149466192171    testing-metric, ap: 0.6615374734325303    testing-metric, video_auc: 0.5048909451421018    testing-metric, acc_real:0.7386120996441281; acc_fake:0.2662962962962963
+2026-09-20 09:27:41,225 - INFO - dataset: avg    step: 17231    testing-metric, acc: 0.42795371498172957    testing-metric, auc: 0.5000856810992487    testing-metric, eer: 0.4918149466192171    testing-metric, ap: 0.6615374734325303    testing-metric, video_auc: 0.5048909451421018    
+2026-09-20 09:27:41,225 - INFO - ===> Test Done!
+2026-09-20 09:27:41,420 - INFO - Step ckpt saved: step_17231.pth
+2026-09-20 09:27:41,934 - INFO - ===> Epoch[2] end with testing auc: 
+================================ Each dataset best metric ================================ 
+| Celeb-DF-v2:  auc=0.5722163734018716 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg auc: 0.5722163734018716 | 
+| Celeb-DF-v2: 0.5722163734018716 | 
+=============================================================================================!
+2026-09-20 09:27:41,935 - INFO - ===> Epoch[2] end, current lr = 0.000051
+2026-09-20 09:27:41,936 - INFO - ===> Epoch[3] start!
+2026-09-20 09:27:41,993 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/train/FF-F2F,FF-DF,FF-FS,FF-NT/data_dict_train.pickle
+2026-09-20 09:27:43,156 - INFO - MEMDBG iter0 start alloc=1.21GB reserved=15.11GB
+2026-09-20 09:27:44,081 - INFO - ===> SWA window open at step 17232 (len=5744 = 1 epochs x 5744, w=1)
+2026-09-20 09:27:46,385 - INFO - ===> probe batch captured: image(32, 3, 256, 256), label(32,), label_spe(32,)
+2026-09-20 09:27:46,919 - INFO - Iter: 17232    training-loss, overall: 1.392442226409912    training-loss, common: 0.6942000389099121    training-loss, specific: 1.3475544452667236    training-loss, reconstruction: 0.30678418278694153    training-loss, contrastive: 9.42902946472168    
+2026-09-20 09:27:46,919 - INFO - Iter: 17232    training-metric, acc: 0.46875    training-metric, acc_spe: 0.5    training-metric, auc: 0.45703125    training-metric, eer: 0.4375    training-metric, ap: 0.47919938597868544    
+2026-09-20 09:27:46,921 - INFO - MEMDBG iter0 end alloc=1.53GB peak=14.61GB
+2026-09-20 09:27:46,923 - INFO - MEMDBG iter1 start alloc=1.53GB reserved=15.11GB
+2026-09-20 09:27:47,600 - INFO - MEMDBG iter1 end alloc=1.56GB peak=14.86GB
+2026-09-20 09:27:47,605 - INFO - MEMDBG iter2 start alloc=1.51GB reserved=15.36GB
+2026-09-20 09:27:48,241 - INFO - MEMDBG iter2 end alloc=1.53GB peak=14.86GB
+2026-09-20 09:27:48,243 - INFO - MEMDBG iter3 start alloc=1.53GB reserved=15.36GB
+2026-09-20 09:27:48,885 - INFO - MEMDBG iter3 end alloc=1.56GB peak=14.86GB
+2026-09-20 09:31:07,828 - INFO - Iter: 17532    training-loss, overall: 1.4785900115966797    training-loss, common: 0.6930807828903198    training-loss, specific: 1.418034553527832    training-loss, reconstruction: 0.3088383674621582    training-loss, contrastive: 11.021084785461426    
+2026-09-20 09:31:07,828 - INFO - Iter: 17532    training-metric, acc: 0.5036458333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.508359375    training-metric, eer: 0.48520833333333335    training-metric, ap: 0.5541861271647702    
+2026-09-20 09:34:28,123 - INFO - Iter: 17832    training-loss, overall: 1.4740549325942993    training-loss, common: 0.6933495998382568    training-loss, specific: 1.4183720350265503    training-loss, reconstruction: 0.30634036660194397    training-loss, contrastive: 10.939318656921387    
+2026-09-20 09:34:28,123 - INFO - Iter: 17832    training-metric, acc: 0.49583333333333335    training-metric, acc_spe: 0.5    training-metric, auc: 0.49444010416666667    training-metric, eer: 0.4997916666666667    training-metric, ap: 0.5447056272249357    
+2026-09-20 09:37:51,927 - INFO - Iter: 18132    training-loss, overall: 1.4814939498901367    training-loss, common: 0.6932008862495422    training-loss, specific: 1.4215413331985474    training-loss, reconstruction: 0.3070158064365387    training-loss, contrastive: 11.08068561553955    
+2026-09-20 09:37:51,927 - INFO - Iter: 18132    training-metric, acc: 0.4976041666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.50041015625    training-metric, eer: 0.4891666666666667    training-metric, ap: 0.5483247861716005    
+2026-09-20 09:41:11,530 - INFO - Iter: 18432    training-loss, overall: 1.4763636589050293    training-loss, common: 0.6929976344108582    training-loss, specific: 1.4174035787582397    training-loss, reconstruction: 0.30773618817329407    training-loss, contrastive: 10.986104011535645    
+2026-09-20 09:41:11,530 - INFO - Iter: 18432    training-metric, acc: 0.5070833333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.5119075520833334    training-metric, eer: 0.485625    training-metric, ap: 0.5605998764124648    
+2026-09-20 09:44:35,918 - INFO - Iter: 18732    training-loss, overall: 1.477146863937378    training-loss, common: 0.6931418180465698    training-loss, specific: 1.4209669828414917    training-loss, reconstruction: 0.30703240633010864    training-loss, contrastive: 10.995963096618652    
+2026-09-20 09:44:35,918 - INFO - Iter: 18732    training-metric, acc: 0.5013541666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.5015885416666667    training-metric, eer: 0.4895833333333333    training-metric, ap: 0.5533187012313658    
+2026-09-20 09:47:59,314 - INFO - Iter: 19032    training-loss, overall: 1.4783909320831299    training-loss, common: 0.693213164806366    training-loss, specific: 1.4228718280792236    training-loss, reconstruction: 0.30741429328918457    training-loss, contrastive: 11.01333236694336    
+2026-09-20 09:47:59,315 - INFO - Iter: 19032    training-metric, acc: 0.4946875    training-metric, acc_spe: 0.5    training-metric, auc: 0.5020442708333334    training-metric, eer: 0.49375    training-metric, ap: 0.549988745822941    
+2026-09-20 09:51:19,518 - INFO - Iter: 19332    training-loss, overall: 1.476648211479187    training-loss, common: 0.693199098110199    training-loss, specific: 1.4201793670654297    training-loss, reconstruction: 0.3078799545764923    training-loss, contrastive: 10.98133659362793    
+2026-09-20 09:51:19,518 - INFO - Iter: 19332    training-metric, acc: 0.49604166666666666    training-metric, acc_spe: 0.5    training-metric, auc: 0.5014713541666667    training-metric, eer: 0.48895833333333333    training-metric, ap: 0.5507513522121936    
+2026-09-20 09:54:38,415 - INFO - Iter: 19632    training-loss, overall: 1.4799630641937256    training-loss, common: 0.6932660937309265    training-loss, specific: 1.4208043813705444    training-loss, reconstruction: 0.3071686625480652    training-loss, contrastive: 11.04931640625    
+2026-09-20 09:54:38,415 - INFO - Iter: 19632    training-metric, acc: 0.4973958333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.4982552083333333    training-metric, eer: 0.49583333333333335    training-metric, ap: 0.5449154437359545    
+2026-09-20 09:57:57,716 - INFO - Iter: 19932    training-loss, overall: 1.4763259887695312    training-loss, common: 0.6931161284446716    training-loss, specific: 1.4209378957748413    training-loss, reconstruction: 0.3059282898902893    training-loss, contrastive: 10.986751556396484    
+2026-09-20 09:57:57,717 - INFO - Iter: 19932    training-metric, acc: 0.503125    training-metric, acc_spe: 0.5    training-metric, auc: 0.50505859375    training-metric, eer: 0.48125    training-metric, ap: 0.5532725076923365    
+2026-09-20 09:59:54,870 - INFO - ===> Test start!
+2026-09-20 09:59:54,876 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/data_dict_test.pickle
+2026-09-20 10:00:19,130 - INFO - dataset: Celeb-DF-v2    step: 20103    testing-loss, common: 0.6935577392578125    
+2026-09-20 10:00:19,132 - INFO - dataset: Celeb-DF-v2    step: 20103    testing-metric, acc: 0.440925700365408    testing-metric, auc: 0.5013108936338474    testing-metric, eer: 0.49270462633451956    testing-metric, ap: 0.6610721336193313    testing-metric, video_auc: 0.5054692663582288    testing-metric, acc_real:0.6738434163701068; acc_fake:0.31972222222222224
+2026-09-20 10:00:19,132 - INFO - dataset: avg    step: 20103    testing-metric, acc: 0.440925700365408    testing-metric, auc: 0.5013108936338474    testing-metric, eer: 0.49270462633451956    testing-metric, ap: 0.6610721336193313    testing-metric, video_auc: 0.5054692663582288    
+2026-09-20 10:00:19,132 - INFO - ===> Test Done!
+2026-09-20 10:00:19,316 - INFO - Step ckpt saved: step_20103.pth
+2026-09-20 10:01:45,220 - INFO - Iter: 20232    training-loss, overall: 1.4748739004135132    training-loss, common: 0.693087637424469    training-loss, specific: 1.4180636405944824    training-loss, reconstruction: 0.3081561028957367    training-loss, contrastive: 10.950654983520508    
+2026-09-20 10:01:45,220 - INFO - Iter: 20232    training-metric, acc: 0.501875    training-metric, acc_spe: 0.5    training-metric, auc: 0.50626953125    training-metric, eer: 0.49875    training-metric, ap: 0.5569597649298327    
+2026-09-20 10:05:09,223 - INFO - Iter: 20532    training-loss, overall: 1.4757696390151978    training-loss, common: 0.6931324601173401    training-loss, specific: 1.4219071865081787    training-loss, reconstruction: 0.3077736496925354    training-loss, contrastive: 10.962295532226562    
+2026-09-20 10:05:09,223 - INFO - Iter: 20532    training-metric, acc: 0.5082291666666666    training-metric, acc_spe: 0.5    training-metric, auc: 0.5055078125    training-metric, eer: 0.48791666666666667    training-metric, ap: 0.5477031210396063    
+2026-09-20 10:08:27,122 - INFO - Iter: 20832    training-loss, overall: 1.4700950384140015    training-loss, common: 0.6931239366531372    training-loss, specific: 1.4233009815216064    training-loss, reconstruction: 0.30654025077819824    training-loss, contrastive: 10.853575706481934    
+2026-09-20 10:08:27,122 - INFO - Iter: 20832    training-metric, acc: 0.505    training-metric, acc_spe: 0.5    training-metric, auc: 0.50765625    training-metric, eer: 0.4875    training-metric, ap: 0.5501911396135476    
+2026-09-20 10:11:46,720 - INFO - Iter: 21132    training-loss, overall: 1.4741065502166748    training-loss, common: 0.6931650042533875    training-loss, specific: 1.4159845113754272    training-loss, reconstruction: 0.3076326847076416    training-loss, contrastive: 10.941069602966309    
+2026-09-20 10:11:46,720 - INFO - Iter: 21132    training-metric, acc: 0.5007291666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.5026302083333334    training-metric, eer: 0.48895833333333333    training-metric, ap: 0.5521704561335402    
+2026-09-20 10:15:06,532 - INFO - Iter: 21432    training-loss, overall: 1.4800407886505127    training-loss, common: 0.6932095289230347    training-loss, specific: 1.421187162399292    training-loss, reconstruction: 0.308197557926178    training-loss, contrastive: 11.045072555541992    
+2026-09-20 10:15:06,532 - INFO - Iter: 21432    training-metric, acc: 0.5003125    training-metric, acc_spe: 0.5    training-metric, auc: 0.49878255208333333    training-metric, eer: 0.49395833333333333    training-metric, ap: 0.5525308475393143    
+2026-09-20 10:18:24,620 - INFO - Iter: 21732    training-loss, overall: 1.4759762287139893    training-loss, common: 0.693091630935669    training-loss, specific: 1.4181791543960571    training-loss, reconstruction: 0.3065092861652374    training-loss, contrastive: 10.98227596282959    
+2026-09-20 10:18:24,620 - INFO - Iter: 21732    training-metric, acc: 0.5103125    training-metric, acc_spe: 0.5    training-metric, auc: 0.5061848958333334    training-metric, eer: 0.4895833333333333    training-metric, ap: 0.5556968905121769    
+2026-09-20 10:21:43,624 - INFO - Iter: 22032    training-loss, overall: 1.4768208265304565    training-loss, common: 0.6931555271148682    training-loss, specific: 1.4206985235214233    training-loss, reconstruction: 0.30628806352615356    training-loss, contrastive: 10.994179725646973    
+2026-09-20 10:21:43,624 - INFO - Iter: 22032    training-metric, acc: 0.49947916666666664    training-metric, acc_spe: 0.5    training-metric, auc: 0.5016927083333333    training-metric, eer: 0.49145833333333333    training-metric, ap: 0.5541228136917931    
+2026-09-20 10:25:06,819 - INFO - Iter: 22332    training-loss, overall: 1.4764244556427002    training-loss, common: 0.6930736899375916    training-loss, specific: 1.4161362648010254    training-loss, reconstruction: 0.30665767192840576    training-loss, contrastive: 10.99478816986084    
+2026-09-20 10:25:06,820 - INFO - Iter: 22332    training-metric, acc: 0.5039583333333333    training-metric, acc_spe: 0.5    training-metric, auc: 0.5073372395833333    training-metric, eer: 0.490625    training-metric, ap: 0.5526721674573318    
+2026-09-20 10:28:27,720 - INFO - Iter: 22632    training-loss, overall: 1.4755975008010864    training-loss, common: 0.6931588649749756    training-loss, specific: 1.425722599029541    training-loss, reconstruction: 0.30675795674324036    training-loss, contrastive: 10.956783294677734    
+2026-09-20 10:28:27,720 - INFO - Iter: 22632    training-metric, acc: 0.49947916666666664    training-metric, acc_spe: 0.5    training-metric, auc: 0.5030924479166666    training-metric, eer: 0.49333333333333335    training-metric, ap: 0.5526571977138761    
+2026-09-20 10:31:47,120 - INFO - Iter: 22932    training-loss, overall: 1.4724082946777344    training-loss, common: 0.693120002746582    training-loss, specific: 1.4176384210586548    training-loss, reconstruction: 0.3054715692996979    training-loss, contrastive: 10.917652130126953    
+2026-09-20 10:31:47,120 - INFO - Iter: 22932    training-metric, acc: 0.5016666666666667    training-metric, acc_spe: 0.5    training-metric, auc: 0.50302734375    training-metric, eer: 0.5002083333333334    training-metric, ap: 0.5530130536042117    
+2026-09-20 10:32:16,182 - INFO - ===> Test start!
+2026-09-20 10:32:16,189 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/data_dict_test.pickle
+2026-09-20 10:32:40,925 - INFO - dataset: Celeb-DF-v2    step: 22975    testing-loss, common: 0.6933447122573853    
+2026-09-20 10:32:40,926 - INFO - dataset: Celeb-DF-v2    step: 22975    testing-metric, acc: 0.46900121802679656    testing-metric, auc: 0.5067058208119152    testing-metric, eer: 0.4880782918149466    testing-metric, ap: 0.6633798405366919    testing-metric, video_auc: 0.5078155981493722    testing-metric, acc_real:0.6163701067615658; acc_fake:0.39231481481481484
+2026-09-20 10:32:40,926 - INFO - dataset: avg    step: 22975    testing-metric, acc: 0.46900121802679656    testing-metric, auc: 0.5067058208119152    testing-metric, eer: 0.4880782918149466    testing-metric, ap: 0.6633798405366919    testing-metric, video_auc: 0.5078155981493722    
+2026-09-20 10:32:40,927 - INFO - ===> Test Done!
+2026-09-20 10:32:41,114 - INFO - Step ckpt saved: step_22975.pth
+2026-09-20 10:32:41,575 - INFO - ===> Epoch[3] end with testing auc: 
+================================ Each dataset best metric ================================ 
+| Celeb-DF-v2:  auc=0.5722163734018716 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg auc: 0.5722163734018716 | 
+| Celeb-DF-v2: 0.5722163734018716 | 
+=============================================================================================!
+2026-09-20 10:32:41,575 - INFO - ===> Epoch[3] end, current lr = 0.000001
+2026-09-20 10:32:41,575 - INFO - Stop Training on best Testing metric 
+================================ Each dataset best metric ================================ 
+| Celeb-DF-v2:  auc=0.5722163734018716 | 
+============================================================================================= 
+================================== Average best metric ====================================== 
+| avg auc: 0.5722163734018716 | 
+| Celeb-DF-v2: 0.5722163734018716 | 
+=============================================================================================
+2026-09-20 10:32:50,343 - INFO - ===> BN recalibrated over 100 batches
+2026-09-20 10:32:58,820 - INFO - ===> window_end_probe written: J={'1': -0.009558} B=0.02836
+2026-09-20 10:32:59,024 - INFO - SWA Checkpoint saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/swa_w1.pth
+2026-09-20 10:32:59,030 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/data_dict_test.pickle
+2026-09-20 10:33:23,357 - INFO - Iter Final for SWA (w=1):    testing-metric, acc: 0.43246041412911085    testing-metric, auc: 0.5024750560168709    testing-metric, eer: 0.4914590747330961    testing-metric, ap: 0.6625139400931452    testing-metric, pred: [0.49938726 0.49793884 0.49746668 ... 0.49969444 0.5002396  0.4978637 ]    testing-metric, video_auc: 0.50672504957039    testing-metric, label: [0 1 0 ... 1 1 1]    
+2026-09-20 10:33:23,358 - INFO - dataset: avg    step: 0    testing-metric, acc: 0.43246041412911085    testing-metric, auc: 0.5024750560168709    testing-metric, eer: 0.4914590747330961    testing-metric, ap: 0.6625139400931452    testing-metric, video_auc: 0.50672504957039    
+2026-09-20 10:33:23,358 - INFO - ===> Test Done!
+2026-09-20 10:33:23,358 - INFO - ===> Final SWA testing done! (w=1)
+2026-09-20 10:33:23,449 - INFO - data_dict saved to /root/cross_bb_logs/ucf_2026-09-20-06-19-12/test/Celeb-DF-v2/data_dict_test.pickle
+2026-09-20 10:33:48,417 - INFO - Iter Final for SWA (w=1, BN recalibrated):    testing-metric, acc: 0.43623629719853835    testing-metric, auc: 0.5002086463687887    testing-metric, eer: 0.4925266903914591    testing-metric, ap: 0.6607673473014132    testing-metric, pred: [0.49945095 0.49803835 0.49757192 ... 0.49978548 0.50029075 0.49798194]    testing-metric, video_auc: 0.504461335095836    testing-metric, label: [0 1 0 ... 1 1 1]    
+2026-09-20 10:33:48,418 - INFO - dataset: avg    step: 0    testing-metric, acc: 0.43623629719853835    testing-metric, auc: 0.5002086463687887    testing-metric, eer: 0.4925266903914591    testing-metric, ap: 0.6607673473014132    testing-metric, video_auc: 0.504461335095836    
+2026-09-20 10:33:48,419 - INFO - ===> Test Done!
+2026-09-20 10:33:48,419 - INFO - ===> Final SWA testing done! (w=1, BN recalibrated)
