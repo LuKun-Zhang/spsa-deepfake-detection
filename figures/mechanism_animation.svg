@@ -1,0 +1,1181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540" role="img" aria-label="Animated Section 3.3 mechanism window: SPSA damps the amplitude">
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}.ti{font-weight:700;font-size:15px;fill:#20242b}.su{font-weight:400;font-size:10.5px;fill:#7a828e}.ch{font-weight:700;font-size:14px;fill:#20242b;text-anchor:middle}.cs{font-weight:400;font-size:9.5px;fill:#7a828e;text-anchor:middle;font-family:ui-monospace,Menlo,Consolas,monospace}.rl{font-weight:700;font-size:12px;text-anchor:middle}.tk{font-weight:400;font-size:9.5px;fill:#7a828e;font-family:ui-monospace,Menlo,Consolas,monospace}.hs{font-weight:400;font-size:9px;fill:#7a828e;text-anchor:middle}.hm{font-weight:700;font-size:9.5px;font-family:ui-monospace,Menlo,Consolas,monospace}.su2{font-weight:400;font-size:10.5px;fill:#7a828e}</style>
+<g>
+<animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.076389" dur="7.2s" repeatCount="indefinite"/>
+<rect width="900" height="540" fill="#ffffff"/>
+<text x="34" y="22" class="ti">Why averaging can win: SPSA damps the window amplitude</text>
+<text x="34" y="38" class="su">Six test points inside the final learning-rate cycle &#183; y is AUC &#8722; the window&#8217;s own mean, in points &#183; one shared y-axis, so the amplitudes are drawn to the same scale</text>
+<text x="186.8" y="58" class="ch">1x</text>
+<text x="186.8" y="70" class="cs">lr 1e-6</text>
+<text x="388.2" y="58" class="ch">40x</text>
+<text x="388.2" y="70" class="cs">lr 8e-5</text>
+<text x="589.8" y="58" class="ch">100x</text>
+<text x="589.8" y="70" class="cs">lr 2e-4</text>
+<text x="791.2" y="58" class="ch">200x</text>
+<text x="791.2" y="70" class="cs">lr 2e-4</text>
+<text x="30" y="189.0" class="rl" fill="#b23a34" transform="rotate(-90 30 189.0)">SPSA off</text>
+<text x="30" y="393.0" class="rl" fill="#1f5fa8" transform="rotate(-90 30 393.0)">SPSA on</text>
+<rect x="126.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="181.0" x2="247.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="253.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="184.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="115.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="181.0" x2="449.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="181.0" x2="650.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="181.0" x2="852.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="126.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="385.0" x2="247.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="457.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="388.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="319.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="385.0" x2="449.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="385.0" x2="650.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="385.0" x2="852.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<circle cx="126.0" cy="176.2" r="3.4" fill="#b23a34"/>
+<text x="186.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.27</tspan><tspan fill="#d97706" dx="12">&#9675; +0.08</tspan></text>
+<circle cx="327.5" cy="177.9" r="3.4" fill="#b23a34"/>
+<text x="388.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +0.10</tspan><tspan fill="#d97706" dx="12">&#9675; +0.67</tspan></text>
+<circle cx="529.0" cy="163.4" r="3.4" fill="#b23a34"/>
+<text x="589.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +2.53</tspan><tspan fill="#d97706" dx="12">&#9675; +1.43</tspan></text>
+<circle cx="730.5" cy="204.0" r="3.4" fill="#b23a34"/>
+<text x="791.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +3.21</tspan><tspan fill="#d97706" dx="12">&#9675; +2.18</tspan></text>
+<circle cx="126.0" cy="378.3" r="3.4" fill="#1f5fa8"/>
+<text x="126.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="150.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="174.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="198.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="223.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="247.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="186.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.07</tspan><tspan fill="#d97706" dx="12">&#9675; +0.14</tspan></text>
+<circle cx="327.5" cy="386.2" r="3.4" fill="#1f5fa8"/>
+<text x="327.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="351.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="376.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="400.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="424.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="449.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="388.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -1.33</tspan><tspan fill="#d97706" dx="12">&#9675; +0.32</tspan></text>
+<circle cx="529.0" cy="405.2" r="3.4" fill="#1f5fa8"/>
+<text x="529.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="553.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="577.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="601.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="626.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="650.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="589.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.69</tspan><tspan fill="#d97706" dx="12">&#9675; +0.70</tspan></text>
+<circle cx="730.5" cy="362.4" r="3.4" fill="#1f5fa8"/>
+<text x="730.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="754.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="779.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="803.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="827.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="852.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="791.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.15</tspan><tspan fill="#d97706" dx="12">&#9675; +0.85</tspan></text>
+<text x="126.0" y="494" class="su2">&#9679; &#952;end, the endpoint&#160;&#160;&#183;&#160;&#160;&#9675; &#952;&#772;, the SWA average&#160;&#160;&#183;&#160;&#160;the bar between them is &#916; = Bonus &#8722; Dev&#160;&#160;&#183;&#160;&#160;dashed line = the window&#8217;s own mean</text>
+<text x="126.0" y="509" class="su2">probes 1&#8211;6 are test points at steps 18182, 19139, 20096, 21053, 22010, 22967 (&#8776;957 apart)</text>
+<text x="126.0" y="524" class="su2">&#952;&#772; read from swa_eval.jsonl with the BatchNorm buffers re-estimated: the Section 3.3 convention</text>
+</g>
+<g>
+<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.076389;0.152778" dur="7.2s" repeatCount="indefinite"/>
+<rect width="900" height="540" fill="#ffffff"/>
+<text x="34" y="22" class="ti">Why averaging can win: SPSA damps the window amplitude</text>
+<text x="34" y="38" class="su">Six test points inside the final learning-rate cycle &#183; y is AUC &#8722; the window&#8217;s own mean, in points &#183; one shared y-axis, so the amplitudes are drawn to the same scale</text>
+<text x="186.8" y="58" class="ch">1x</text>
+<text x="186.8" y="70" class="cs">lr 1e-6</text>
+<text x="388.2" y="58" class="ch">40x</text>
+<text x="388.2" y="70" class="cs">lr 8e-5</text>
+<text x="589.8" y="58" class="ch">100x</text>
+<text x="589.8" y="70" class="cs">lr 2e-4</text>
+<text x="791.2" y="58" class="ch">200x</text>
+<text x="791.2" y="70" class="cs">lr 2e-4</text>
+<text x="30" y="189.0" class="rl" fill="#b23a34" transform="rotate(-90 30 189.0)">SPSA off</text>
+<text x="30" y="393.0" class="rl" fill="#1f5fa8" transform="rotate(-90 30 393.0)">SPSA on</text>
+<rect x="126.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="181.0" x2="247.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="253.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="184.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="115.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="181.0" x2="449.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="181.0" x2="650.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="181.0" x2="852.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="126.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="385.0" x2="247.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="457.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="388.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="319.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="385.0" x2="449.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="385.0" x2="650.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="385.0" x2="852.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="126.0,176.2 150.3,179.8"/>
+<circle cx="126.0" cy="176.2" r="2.6" fill="#b23a34"/>
+<circle cx="150.3" cy="179.8" r="3.4" fill="#b23a34"/>
+<text x="186.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.27</tspan><tspan fill="#d97706" dx="12">&#9675; +0.08</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="327.5,177.9 351.8,143.2"/>
+<circle cx="327.5" cy="177.9" r="2.6" fill="#b23a34"/>
+<circle cx="351.8" cy="143.2" r="3.4" fill="#b23a34"/>
+<text x="388.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +0.10</tspan><tspan fill="#d97706" dx="12">&#9675; +0.67</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="529.0,163.4 553.3,181.4"/>
+<circle cx="529.0" cy="163.4" r="2.6" fill="#b23a34"/>
+<circle cx="553.3" cy="181.4" r="3.4" fill="#b23a34"/>
+<text x="589.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +2.53</tspan><tspan fill="#d97706" dx="12">&#9675; +1.43</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="730.5,204.0 754.8,140.6"/>
+<circle cx="730.5" cy="204.0" r="2.6" fill="#b23a34"/>
+<circle cx="754.8" cy="140.6" r="3.4" fill="#b23a34"/>
+<text x="791.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +3.21</tspan><tspan fill="#d97706" dx="12">&#9675; +2.18</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="126.0,378.3 150.3,383.2"/>
+<circle cx="126.0" cy="378.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="150.3" cy="383.2" r="3.4" fill="#1f5fa8"/>
+<text x="126.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="150.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="174.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="198.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="223.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="247.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="186.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.07</tspan><tspan fill="#d97706" dx="12">&#9675; +0.14</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="327.5,386.2 351.8,369.7"/>
+<circle cx="327.5" cy="386.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="351.8" cy="369.7" r="3.4" fill="#1f5fa8"/>
+<text x="327.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="351.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="376.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="400.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="424.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="449.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="388.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -1.33</tspan><tspan fill="#d97706" dx="12">&#9675; +0.32</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="529.0,405.2 553.3,375.8"/>
+<circle cx="529.0" cy="405.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="553.3" cy="375.8" r="3.4" fill="#1f5fa8"/>
+<text x="529.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="553.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="577.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="601.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="626.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="650.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="589.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.69</tspan><tspan fill="#d97706" dx="12">&#9675; +0.70</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="730.5,362.4 754.8,394.0"/>
+<circle cx="730.5" cy="362.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="754.8" cy="394.0" r="3.4" fill="#1f5fa8"/>
+<text x="730.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="754.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="779.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="803.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="827.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="852.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="791.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.15</tspan><tspan fill="#d97706" dx="12">&#9675; +0.85</tspan></text>
+<text x="126.0" y="494" class="su2">&#9679; &#952;end, the endpoint&#160;&#160;&#183;&#160;&#160;&#9675; &#952;&#772;, the SWA average&#160;&#160;&#183;&#160;&#160;the bar between them is &#916; = Bonus &#8722; Dev&#160;&#160;&#183;&#160;&#160;dashed line = the window&#8217;s own mean</text>
+<text x="126.0" y="509" class="su2">probes 1&#8211;6 are test points at steps 18182, 19139, 20096, 21053, 22010, 22967 (&#8776;957 apart)</text>
+<text x="126.0" y="524" class="su2">&#952;&#772; read from swa_eval.jsonl with the BatchNorm buffers re-estimated: the Section 3.3 convention</text>
+</g>
+<g>
+<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.152778;0.229167" dur="7.2s" repeatCount="indefinite"/>
+<rect width="900" height="540" fill="#ffffff"/>
+<text x="34" y="22" class="ti">Why averaging can win: SPSA damps the window amplitude</text>
+<text x="34" y="38" class="su">Six test points inside the final learning-rate cycle &#183; y is AUC &#8722; the window&#8217;s own mean, in points &#183; one shared y-axis, so the amplitudes are drawn to the same scale</text>
+<text x="186.8" y="58" class="ch">1x</text>
+<text x="186.8" y="70" class="cs">lr 1e-6</text>
+<text x="388.2" y="58" class="ch">40x</text>
+<text x="388.2" y="70" class="cs">lr 8e-5</text>
+<text x="589.8" y="58" class="ch">100x</text>
+<text x="589.8" y="70" class="cs">lr 2e-4</text>
+<text x="791.2" y="58" class="ch">200x</text>
+<text x="791.2" y="70" class="cs">lr 2e-4</text>
+<text x="30" y="189.0" class="rl" fill="#b23a34" transform="rotate(-90 30 189.0)">SPSA off</text>
+<text x="30" y="393.0" class="rl" fill="#1f5fa8" transform="rotate(-90 30 393.0)">SPSA on</text>
+<rect x="126.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="181.0" x2="247.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="253.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="184.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="115.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="181.0" x2="449.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="181.0" x2="650.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="181.0" x2="852.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="126.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="385.0" x2="247.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="457.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="388.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="319.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="385.0" x2="449.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="385.0" x2="650.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="385.0" x2="852.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="126.0,176.2 150.3,179.8 174.6,180.4"/>
+<circle cx="126.0" cy="176.2" r="2.6" fill="#b23a34"/>
+<circle cx="150.3" cy="179.8" r="2.6" fill="#b23a34"/>
+<circle cx="174.6" cy="180.4" r="3.4" fill="#b23a34"/>
+<text x="186.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.27</tspan><tspan fill="#d97706" dx="12">&#9675; +0.08</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="327.5,177.9 351.8,143.2 376.1,188.0"/>
+<circle cx="327.5" cy="177.9" r="2.6" fill="#b23a34"/>
+<circle cx="351.8" cy="143.2" r="2.6" fill="#b23a34"/>
+<circle cx="376.1" cy="188.0" r="3.4" fill="#b23a34"/>
+<text x="388.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +0.10</tspan><tspan fill="#d97706" dx="12">&#9675; +0.67</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="529.0,163.4 553.3,181.4 577.6,210.2"/>
+<circle cx="529.0" cy="163.4" r="2.6" fill="#b23a34"/>
+<circle cx="553.3" cy="181.4" r="2.6" fill="#b23a34"/>
+<circle cx="577.6" cy="210.2" r="3.4" fill="#b23a34"/>
+<text x="589.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +2.53</tspan><tspan fill="#d97706" dx="12">&#9675; +1.43</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="730.5,204.0 754.8,140.6 779.1,240.6"/>
+<circle cx="730.5" cy="204.0" r="2.6" fill="#b23a34"/>
+<circle cx="754.8" cy="140.6" r="2.6" fill="#b23a34"/>
+<circle cx="779.1" cy="240.6" r="3.4" fill="#b23a34"/>
+<text x="791.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +3.21</tspan><tspan fill="#d97706" dx="12">&#9675; +2.18</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="126.0,378.3 150.3,383.2 174.6,384.3"/>
+<circle cx="126.0" cy="378.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="150.3" cy="383.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="174.6" cy="384.3" r="3.4" fill="#1f5fa8"/>
+<text x="126.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="150.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="174.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="198.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="223.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="247.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="186.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.07</tspan><tspan fill="#d97706" dx="12">&#9675; +0.14</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="327.5,386.2 351.8,369.7 376.1,396.6"/>
+<circle cx="327.5" cy="386.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="351.8" cy="369.7" r="2.6" fill="#1f5fa8"/>
+<circle cx="376.1" cy="396.6" r="3.4" fill="#1f5fa8"/>
+<text x="327.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="351.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="376.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="400.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="424.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="449.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="388.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -1.33</tspan><tspan fill="#d97706" dx="12">&#9675; +0.32</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="529.0,405.2 553.3,375.8 577.6,380.4"/>
+<circle cx="529.0" cy="405.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="553.3" cy="375.8" r="2.6" fill="#1f5fa8"/>
+<circle cx="577.6" cy="380.4" r="3.4" fill="#1f5fa8"/>
+<text x="529.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="553.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="577.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="601.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="626.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="650.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="589.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.69</tspan><tspan fill="#d97706" dx="12">&#9675; +0.70</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="730.5,362.4 754.8,394.0 779.1,381.1"/>
+<circle cx="730.5" cy="362.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="754.8" cy="394.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="779.1" cy="381.1" r="3.4" fill="#1f5fa8"/>
+<text x="730.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="754.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="779.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="803.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="827.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="852.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="791.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.15</tspan><tspan fill="#d97706" dx="12">&#9675; +0.85</tspan></text>
+<text x="126.0" y="494" class="su2">&#9679; &#952;end, the endpoint&#160;&#160;&#183;&#160;&#160;&#9675; &#952;&#772;, the SWA average&#160;&#160;&#183;&#160;&#160;the bar between them is &#916; = Bonus &#8722; Dev&#160;&#160;&#183;&#160;&#160;dashed line = the window&#8217;s own mean</text>
+<text x="126.0" y="509" class="su2">probes 1&#8211;6 are test points at steps 18182, 19139, 20096, 21053, 22010, 22967 (&#8776;957 apart)</text>
+<text x="126.0" y="524" class="su2">&#952;&#772; read from swa_eval.jsonl with the BatchNorm buffers re-estimated: the Section 3.3 convention</text>
+</g>
+<g>
+<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.229167;0.305556" dur="7.2s" repeatCount="indefinite"/>
+<rect width="900" height="540" fill="#ffffff"/>
+<text x="34" y="22" class="ti">Why averaging can win: SPSA damps the window amplitude</text>
+<text x="34" y="38" class="su">Six test points inside the final learning-rate cycle &#183; y is AUC &#8722; the window&#8217;s own mean, in points &#183; one shared y-axis, so the amplitudes are drawn to the same scale</text>
+<text x="186.8" y="58" class="ch">1x</text>
+<text x="186.8" y="70" class="cs">lr 1e-6</text>
+<text x="388.2" y="58" class="ch">40x</text>
+<text x="388.2" y="70" class="cs">lr 8e-5</text>
+<text x="589.8" y="58" class="ch">100x</text>
+<text x="589.8" y="70" class="cs">lr 2e-4</text>
+<text x="791.2" y="58" class="ch">200x</text>
+<text x="791.2" y="70" class="cs">lr 2e-4</text>
+<text x="30" y="189.0" class="rl" fill="#b23a34" transform="rotate(-90 30 189.0)">SPSA off</text>
+<text x="30" y="393.0" class="rl" fill="#1f5fa8" transform="rotate(-90 30 393.0)">SPSA on</text>
+<rect x="126.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="181.0" x2="247.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="253.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="184.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="115.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="181.0" x2="449.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="181.0" x2="650.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="181.0" x2="852.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="126.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="385.0" x2="247.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="457.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="388.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="319.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="385.0" x2="449.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="385.0" x2="650.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="385.0" x2="852.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="126.0,176.2 150.3,179.8 174.6,180.4 198.9,180.1"/>
+<circle cx="126.0" cy="176.2" r="2.6" fill="#b23a34"/>
+<circle cx="150.3" cy="179.8" r="2.6" fill="#b23a34"/>
+<circle cx="174.6" cy="180.4" r="2.6" fill="#b23a34"/>
+<circle cx="198.9" cy="180.1" r="3.4" fill="#b23a34"/>
+<text x="186.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.27</tspan><tspan fill="#d97706" dx="12">&#9675; +0.08</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="327.5,177.9 351.8,143.2 376.1,188.0 400.4,170.9"/>
+<circle cx="327.5" cy="177.9" r="2.6" fill="#b23a34"/>
+<circle cx="351.8" cy="143.2" r="2.6" fill="#b23a34"/>
+<circle cx="376.1" cy="188.0" r="2.6" fill="#b23a34"/>
+<circle cx="400.4" cy="170.9" r="3.4" fill="#b23a34"/>
+<text x="388.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +0.10</tspan><tspan fill="#d97706" dx="12">&#9675; +0.67</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="529.0,163.4 553.3,181.4 577.6,210.2 601.9,194.7"/>
+<circle cx="529.0" cy="163.4" r="2.6" fill="#b23a34"/>
+<circle cx="553.3" cy="181.4" r="2.6" fill="#b23a34"/>
+<circle cx="577.6" cy="210.2" r="2.6" fill="#b23a34"/>
+<circle cx="601.9" cy="194.7" r="3.4" fill="#b23a34"/>
+<text x="589.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +2.53</tspan><tspan fill="#d97706" dx="12">&#9675; +1.43</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="730.5,204.0 754.8,140.6 779.1,240.6 803.4,181.3"/>
+<circle cx="730.5" cy="204.0" r="2.6" fill="#b23a34"/>
+<circle cx="754.8" cy="140.6" r="2.6" fill="#b23a34"/>
+<circle cx="779.1" cy="240.6" r="2.6" fill="#b23a34"/>
+<circle cx="803.4" cy="181.3" r="3.4" fill="#b23a34"/>
+<text x="791.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +3.21</tspan><tspan fill="#d97706" dx="12">&#9675; +2.18</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="126.0,378.3 150.3,383.2 174.6,384.3 198.9,390.0"/>
+<circle cx="126.0" cy="378.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="150.3" cy="383.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="174.6" cy="384.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="198.9" cy="390.0" r="3.4" fill="#1f5fa8"/>
+<text x="126.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="150.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="174.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="198.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="223.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="247.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="186.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.07</tspan><tspan fill="#d97706" dx="12">&#9675; +0.14</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="327.5,386.2 351.8,369.7 376.1,396.6 400.4,376.2"/>
+<circle cx="327.5" cy="386.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="351.8" cy="369.7" r="2.6" fill="#1f5fa8"/>
+<circle cx="376.1" cy="396.6" r="2.6" fill="#1f5fa8"/>
+<circle cx="400.4" cy="376.2" r="3.4" fill="#1f5fa8"/>
+<text x="327.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="351.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="376.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="400.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="424.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="449.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="388.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -1.33</tspan><tspan fill="#d97706" dx="12">&#9675; +0.32</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="529.0,405.2 553.3,375.8 577.6,380.4 601.9,368.5"/>
+<circle cx="529.0" cy="405.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="553.3" cy="375.8" r="2.6" fill="#1f5fa8"/>
+<circle cx="577.6" cy="380.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="601.9" cy="368.5" r="3.4" fill="#1f5fa8"/>
+<text x="529.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="553.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="577.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="601.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="626.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="650.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="589.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.69</tspan><tspan fill="#d97706" dx="12">&#9675; +0.70</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="730.5,362.4 754.8,394.0 779.1,381.1 803.4,374.2"/>
+<circle cx="730.5" cy="362.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="754.8" cy="394.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="779.1" cy="381.1" r="2.6" fill="#1f5fa8"/>
+<circle cx="803.4" cy="374.2" r="3.4" fill="#1f5fa8"/>
+<text x="730.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="754.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="779.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="803.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="827.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="852.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="791.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.15</tspan><tspan fill="#d97706" dx="12">&#9675; +0.85</tspan></text>
+<text x="126.0" y="494" class="su2">&#9679; &#952;end, the endpoint&#160;&#160;&#183;&#160;&#160;&#9675; &#952;&#772;, the SWA average&#160;&#160;&#183;&#160;&#160;the bar between them is &#916; = Bonus &#8722; Dev&#160;&#160;&#183;&#160;&#160;dashed line = the window&#8217;s own mean</text>
+<text x="126.0" y="509" class="su2">probes 1&#8211;6 are test points at steps 18182, 19139, 20096, 21053, 22010, 22967 (&#8776;957 apart)</text>
+<text x="126.0" y="524" class="su2">&#952;&#772; read from swa_eval.jsonl with the BatchNorm buffers re-estimated: the Section 3.3 convention</text>
+</g>
+<g>
+<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.305556;0.381944" dur="7.2s" repeatCount="indefinite"/>
+<rect width="900" height="540" fill="#ffffff"/>
+<text x="34" y="22" class="ti">Why averaging can win: SPSA damps the window amplitude</text>
+<text x="34" y="38" class="su">Six test points inside the final learning-rate cycle &#183; y is AUC &#8722; the window&#8217;s own mean, in points &#183; one shared y-axis, so the amplitudes are drawn to the same scale</text>
+<text x="186.8" y="58" class="ch">1x</text>
+<text x="186.8" y="70" class="cs">lr 1e-6</text>
+<text x="388.2" y="58" class="ch">40x</text>
+<text x="388.2" y="70" class="cs">lr 8e-5</text>
+<text x="589.8" y="58" class="ch">100x</text>
+<text x="589.8" y="70" class="cs">lr 2e-4</text>
+<text x="791.2" y="58" class="ch">200x</text>
+<text x="791.2" y="70" class="cs">lr 2e-4</text>
+<text x="30" y="189.0" class="rl" fill="#b23a34" transform="rotate(-90 30 189.0)">SPSA off</text>
+<text x="30" y="393.0" class="rl" fill="#1f5fa8" transform="rotate(-90 30 393.0)">SPSA on</text>
+<rect x="126.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="181.0" x2="247.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="253.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="184.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="115.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="181.0" x2="449.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="181.0" x2="650.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="181.0" x2="852.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="126.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="385.0" x2="247.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="457.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="388.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="319.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="385.0" x2="449.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="385.0" x2="650.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="385.0" x2="852.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="126.0,176.2 150.3,179.8 174.6,180.4 198.9,180.1 223.2,185.3"/>
+<circle cx="126.0" cy="176.2" r="2.6" fill="#b23a34"/>
+<circle cx="150.3" cy="179.8" r="2.6" fill="#b23a34"/>
+<circle cx="174.6" cy="180.4" r="2.6" fill="#b23a34"/>
+<circle cx="198.9" cy="180.1" r="2.6" fill="#b23a34"/>
+<circle cx="223.2" cy="185.3" r="3.4" fill="#b23a34"/>
+<text x="186.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.27</tspan><tspan fill="#d97706" dx="12">&#9675; +0.08</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="327.5,177.9 351.8,143.2 376.1,188.0 400.4,170.9 424.7,226.2"/>
+<circle cx="327.5" cy="177.9" r="2.6" fill="#b23a34"/>
+<circle cx="351.8" cy="143.2" r="2.6" fill="#b23a34"/>
+<circle cx="376.1" cy="188.0" r="2.6" fill="#b23a34"/>
+<circle cx="400.4" cy="170.9" r="2.6" fill="#b23a34"/>
+<circle cx="424.7" cy="226.2" r="3.4" fill="#b23a34"/>
+<text x="388.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +0.10</tspan><tspan fill="#d97706" dx="12">&#9675; +0.67</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="529.0,163.4 553.3,181.4 577.6,210.2 601.9,194.7 626.2,184.4"/>
+<circle cx="529.0" cy="163.4" r="2.6" fill="#b23a34"/>
+<circle cx="553.3" cy="181.4" r="2.6" fill="#b23a34"/>
+<circle cx="577.6" cy="210.2" r="2.6" fill="#b23a34"/>
+<circle cx="601.9" cy="194.7" r="2.6" fill="#b23a34"/>
+<circle cx="626.2" cy="184.4" r="3.4" fill="#b23a34"/>
+<text x="589.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +2.53</tspan><tspan fill="#d97706" dx="12">&#9675; +1.43</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="730.5,204.0 754.8,140.6 779.1,240.6 803.4,181.3 827.7,175.3"/>
+<circle cx="730.5" cy="204.0" r="2.6" fill="#b23a34"/>
+<circle cx="754.8" cy="140.6" r="2.6" fill="#b23a34"/>
+<circle cx="779.1" cy="240.6" r="2.6" fill="#b23a34"/>
+<circle cx="803.4" cy="181.3" r="2.6" fill="#b23a34"/>
+<circle cx="827.7" cy="175.3" r="3.4" fill="#b23a34"/>
+<text x="791.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +3.21</tspan><tspan fill="#d97706" dx="12">&#9675; +2.18</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="126.0,378.3 150.3,383.2 174.6,384.3 198.9,390.0 223.2,388.5"/>
+<circle cx="126.0" cy="378.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="150.3" cy="383.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="174.6" cy="384.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="198.9" cy="390.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="223.2" cy="388.5" r="3.4" fill="#1f5fa8"/>
+<text x="126.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="150.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="174.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="198.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="223.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="247.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="186.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.07</tspan><tspan fill="#d97706" dx="12">&#9675; +0.14</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="327.5,386.2 351.8,369.7 376.1,396.6 400.4,376.2 424.7,380.9"/>
+<circle cx="327.5" cy="386.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="351.8" cy="369.7" r="2.6" fill="#1f5fa8"/>
+<circle cx="376.1" cy="396.6" r="2.6" fill="#1f5fa8"/>
+<circle cx="400.4" cy="376.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="424.7" cy="380.9" r="3.4" fill="#1f5fa8"/>
+<text x="327.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="351.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="376.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="400.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="424.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="449.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="388.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -1.33</tspan><tspan fill="#d97706" dx="12">&#9675; +0.32</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="529.0,405.2 553.3,375.8 577.6,380.4 601.9,368.5 626.2,387.2"/>
+<circle cx="529.0" cy="405.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="553.3" cy="375.8" r="2.6" fill="#1f5fa8"/>
+<circle cx="577.6" cy="380.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="601.9" cy="368.5" r="2.6" fill="#1f5fa8"/>
+<circle cx="626.2" cy="387.2" r="3.4" fill="#1f5fa8"/>
+<text x="529.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="553.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="577.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="601.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="626.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="650.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="589.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.69</tspan><tspan fill="#d97706" dx="12">&#9675; +0.70</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="730.5,362.4 754.8,394.0 779.1,381.1 803.4,374.2 827.7,411.6"/>
+<circle cx="730.5" cy="362.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="754.8" cy="394.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="779.1" cy="381.1" r="2.6" fill="#1f5fa8"/>
+<circle cx="803.4" cy="374.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="827.7" cy="411.6" r="3.4" fill="#1f5fa8"/>
+<text x="730.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="754.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="779.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="803.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="827.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="852.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="791.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.15</tspan><tspan fill="#d97706" dx="12">&#9675; +0.85</tspan></text>
+<text x="126.0" y="494" class="su2">&#9679; &#952;end, the endpoint&#160;&#160;&#183;&#160;&#160;&#9675; &#952;&#772;, the SWA average&#160;&#160;&#183;&#160;&#160;the bar between them is &#916; = Bonus &#8722; Dev&#160;&#160;&#183;&#160;&#160;dashed line = the window&#8217;s own mean</text>
+<text x="126.0" y="509" class="su2">probes 1&#8211;6 are test points at steps 18182, 19139, 20096, 21053, 22010, 22967 (&#8776;957 apart)</text>
+<text x="126.0" y="524" class="su2">&#952;&#772; read from swa_eval.jsonl with the BatchNorm buffers re-estimated: the Section 3.3 convention</text>
+</g>
+<g>
+<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.381944;0.458333" dur="7.2s" repeatCount="indefinite"/>
+<rect width="900" height="540" fill="#ffffff"/>
+<text x="34" y="22" class="ti">Why averaging can win: SPSA damps the window amplitude</text>
+<text x="34" y="38" class="su">Six test points inside the final learning-rate cycle &#183; y is AUC &#8722; the window&#8217;s own mean, in points &#183; one shared y-axis, so the amplitudes are drawn to the same scale</text>
+<text x="186.8" y="58" class="ch">1x</text>
+<text x="186.8" y="70" class="cs">lr 1e-6</text>
+<text x="388.2" y="58" class="ch">40x</text>
+<text x="388.2" y="70" class="cs">lr 8e-5</text>
+<text x="589.8" y="58" class="ch">100x</text>
+<text x="589.8" y="70" class="cs">lr 2e-4</text>
+<text x="791.2" y="58" class="ch">200x</text>
+<text x="791.2" y="70" class="cs">lr 2e-4</text>
+<text x="30" y="189.0" class="rl" fill="#b23a34" transform="rotate(-90 30 189.0)">SPSA off</text>
+<text x="30" y="393.0" class="rl" fill="#1f5fa8" transform="rotate(-90 30 393.0)">SPSA on</text>
+<rect x="126.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="181.0" x2="247.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="253.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="184.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="115.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="181.0" x2="449.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="181.0" x2="650.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="181.0" x2="852.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="126.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="385.0" x2="247.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="457.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="388.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="319.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="385.0" x2="449.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="385.0" x2="650.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="385.0" x2="852.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="126.0,176.2 150.3,179.8 174.6,180.4 198.9,180.1 223.2,185.3 247.5,184.1"/>
+<circle cx="126.0" cy="176.2" r="2.6" fill="#b23a34"/>
+<circle cx="150.3" cy="179.8" r="2.6" fill="#b23a34"/>
+<circle cx="174.6" cy="180.4" r="2.6" fill="#b23a34"/>
+<circle cx="198.9" cy="180.1" r="2.6" fill="#b23a34"/>
+<circle cx="223.2" cy="185.3" r="2.6" fill="#b23a34"/>
+<circle cx="247.5" cy="184.1" r="3.4" fill="#b23a34"/>
+<text x="186.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.27</tspan><tspan fill="#d97706" dx="12">&#9675; +0.08</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="327.5,177.9 351.8,143.2 376.1,188.0 400.4,170.9 424.7,226.2 449.0,179.9"/>
+<circle cx="327.5" cy="177.9" r="2.6" fill="#b23a34"/>
+<circle cx="351.8" cy="143.2" r="2.6" fill="#b23a34"/>
+<circle cx="376.1" cy="188.0" r="2.6" fill="#b23a34"/>
+<circle cx="400.4" cy="170.9" r="2.6" fill="#b23a34"/>
+<circle cx="424.7" cy="226.2" r="2.6" fill="#b23a34"/>
+<circle cx="449.0" cy="179.9" r="3.4" fill="#b23a34"/>
+<text x="388.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +0.10</tspan><tspan fill="#d97706" dx="12">&#9675; +0.67</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="529.0,163.4 553.3,181.4 577.6,210.2 601.9,194.7 626.2,184.4 650.5,151.9"/>
+<circle cx="529.0" cy="163.4" r="2.6" fill="#b23a34"/>
+<circle cx="553.3" cy="181.4" r="2.6" fill="#b23a34"/>
+<circle cx="577.6" cy="210.2" r="2.6" fill="#b23a34"/>
+<circle cx="601.9" cy="194.7" r="2.6" fill="#b23a34"/>
+<circle cx="626.2" cy="184.4" r="2.6" fill="#b23a34"/>
+<circle cx="650.5" cy="151.9" r="3.4" fill="#b23a34"/>
+<text x="589.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +2.53</tspan><tspan fill="#d97706" dx="12">&#9675; +1.43</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="730.5,204.0 754.8,140.6 779.1,240.6 803.4,181.3 827.7,175.3 852.0,144.1"/>
+<circle cx="730.5" cy="204.0" r="2.6" fill="#b23a34"/>
+<circle cx="754.8" cy="140.6" r="2.6" fill="#b23a34"/>
+<circle cx="779.1" cy="240.6" r="2.6" fill="#b23a34"/>
+<circle cx="803.4" cy="181.3" r="2.6" fill="#b23a34"/>
+<circle cx="827.7" cy="175.3" r="2.6" fill="#b23a34"/>
+<circle cx="852.0" cy="144.1" r="3.4" fill="#b23a34"/>
+<text x="791.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +3.21</tspan><tspan fill="#d97706" dx="12">&#9675; +2.18</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="126.0,378.3 150.3,383.2 174.6,384.3 198.9,390.0 223.2,388.5 247.5,385.8"/>
+<circle cx="126.0" cy="378.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="150.3" cy="383.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="174.6" cy="384.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="198.9" cy="390.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="223.2" cy="388.5" r="2.6" fill="#1f5fa8"/>
+<circle cx="247.5" cy="385.8" r="3.4" fill="#1f5fa8"/>
+<text x="126.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="150.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="174.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="198.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="223.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="247.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="186.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.07</tspan><tspan fill="#d97706" dx="12">&#9675; +0.14</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="327.5,386.2 351.8,369.7 376.1,396.6 400.4,376.2 424.7,380.9 449.0,400.3"/>
+<circle cx="327.5" cy="386.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="351.8" cy="369.7" r="2.6" fill="#1f5fa8"/>
+<circle cx="376.1" cy="396.6" r="2.6" fill="#1f5fa8"/>
+<circle cx="400.4" cy="376.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="424.7" cy="380.9" r="2.6" fill="#1f5fa8"/>
+<circle cx="449.0" cy="400.3" r="3.4" fill="#1f5fa8"/>
+<text x="327.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="351.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="376.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="400.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="424.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="449.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="388.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -1.33</tspan><tspan fill="#d97706" dx="12">&#9675; +0.32</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="529.0,405.2 553.3,375.8 577.6,380.4 601.9,368.5 626.2,387.2 650.5,392.9"/>
+<circle cx="529.0" cy="405.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="553.3" cy="375.8" r="2.6" fill="#1f5fa8"/>
+<circle cx="577.6" cy="380.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="601.9" cy="368.5" r="2.6" fill="#1f5fa8"/>
+<circle cx="626.2" cy="387.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="650.5" cy="392.9" r="3.4" fill="#1f5fa8"/>
+<text x="529.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="553.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="577.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="601.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="626.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="650.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="589.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.69</tspan><tspan fill="#d97706" dx="12">&#9675; +0.70</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="730.5,362.4 754.8,394.0 779.1,381.1 803.4,374.2 827.7,411.6 852.0,386.7"/>
+<circle cx="730.5" cy="362.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="754.8" cy="394.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="779.1" cy="381.1" r="2.6" fill="#1f5fa8"/>
+<circle cx="803.4" cy="374.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="827.7" cy="411.6" r="2.6" fill="#1f5fa8"/>
+<circle cx="852.0" cy="386.7" r="3.4" fill="#1f5fa8"/>
+<text x="730.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="754.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="779.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="803.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="827.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="852.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<text x="791.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.15</tspan><tspan fill="#d97706" dx="12">&#9675; +0.85</tspan></text>
+<text x="126.0" y="494" class="su2">&#9679; &#952;end, the endpoint&#160;&#160;&#183;&#160;&#160;&#9675; &#952;&#772;, the SWA average&#160;&#160;&#183;&#160;&#160;the bar between them is &#916; = Bonus &#8722; Dev&#160;&#160;&#183;&#160;&#160;dashed line = the window&#8217;s own mean</text>
+<text x="126.0" y="509" class="su2">probes 1&#8211;6 are test points at steps 18182, 19139, 20096, 21053, 22010, 22967 (&#8776;957 apart)</text>
+<text x="126.0" y="524" class="su2">&#952;&#772; read from swa_eval.jsonl with the BatchNorm buffers re-estimated: the Section 3.3 convention</text>
+</g>
+<g>
+<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.458333;0.583333" dur="7.2s" repeatCount="indefinite"/>
+<rect width="900" height="540" fill="#ffffff"/>
+<text x="34" y="22" class="ti">Why averaging can win: SPSA damps the window amplitude</text>
+<text x="34" y="38" class="su">Six test points inside the final learning-rate cycle &#183; y is AUC &#8722; the window&#8217;s own mean, in points &#183; one shared y-axis, so the amplitudes are drawn to the same scale</text>
+<text x="186.8" y="58" class="ch">1x</text>
+<text x="186.8" y="70" class="cs">lr 1e-6</text>
+<text x="388.2" y="58" class="ch">40x</text>
+<text x="388.2" y="70" class="cs">lr 8e-5</text>
+<text x="589.8" y="58" class="ch">100x</text>
+<text x="589.8" y="70" class="cs">lr 2e-4</text>
+<text x="791.2" y="58" class="ch">200x</text>
+<text x="791.2" y="70" class="cs">lr 2e-4</text>
+<text x="30" y="189.0" class="rl" fill="#b23a34" transform="rotate(-90 30 189.0)">SPSA off</text>
+<text x="30" y="393.0" class="rl" fill="#1f5fa8" transform="rotate(-90 30 393.0)">SPSA on</text>
+<rect x="126.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="181.0" x2="247.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="253.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="184.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="115.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="181.0" x2="449.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="181.0" x2="650.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="181.0" x2="852.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="126.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="385.0" x2="247.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="457.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="388.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="319.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="385.0" x2="449.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="385.0" x2="650.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="385.0" x2="852.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="126.0,176.2 150.3,179.8 174.6,180.4 198.9,180.1 223.2,185.3 247.5,184.1"/>
+<circle cx="126.0" cy="176.2" r="2.6" fill="#b23a34"/>
+<circle cx="150.3" cy="179.8" r="2.6" fill="#b23a34"/>
+<circle cx="174.6" cy="180.4" r="2.6" fill="#b23a34"/>
+<circle cx="198.9" cy="180.1" r="2.6" fill="#b23a34"/>
+<circle cx="223.2" cy="185.3" r="2.6" fill="#b23a34"/>
+<circle cx="247.5" cy="184.1" r="3.4" fill="#b23a34"/>
+<circle cx="247.5" cy="184.1" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<text x="186.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.27</tspan><tspan fill="#d97706" dx="12">&#9675; +0.08</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="327.5,177.9 351.8,143.2 376.1,188.0 400.4,170.9 424.7,226.2 449.0,179.9"/>
+<circle cx="327.5" cy="177.9" r="2.6" fill="#b23a34"/>
+<circle cx="351.8" cy="143.2" r="2.6" fill="#b23a34"/>
+<circle cx="376.1" cy="188.0" r="2.6" fill="#b23a34"/>
+<circle cx="400.4" cy="170.9" r="2.6" fill="#b23a34"/>
+<circle cx="424.7" cy="226.2" r="2.6" fill="#b23a34"/>
+<circle cx="449.0" cy="179.9" r="3.4" fill="#b23a34"/>
+<circle cx="449.0" cy="179.9" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<text x="388.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +0.10</tspan><tspan fill="#d97706" dx="12">&#9675; +0.67</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="529.0,163.4 553.3,181.4 577.6,210.2 601.9,194.7 626.2,184.4 650.5,151.9"/>
+<circle cx="529.0" cy="163.4" r="2.6" fill="#b23a34"/>
+<circle cx="553.3" cy="181.4" r="2.6" fill="#b23a34"/>
+<circle cx="577.6" cy="210.2" r="2.6" fill="#b23a34"/>
+<circle cx="601.9" cy="194.7" r="2.6" fill="#b23a34"/>
+<circle cx="626.2" cy="184.4" r="2.6" fill="#b23a34"/>
+<circle cx="650.5" cy="151.9" r="3.4" fill="#b23a34"/>
+<circle cx="650.5" cy="151.9" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<text x="589.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +2.53</tspan><tspan fill="#d97706" dx="12">&#9675; +1.43</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="730.5,204.0 754.8,140.6 779.1,240.6 803.4,181.3 827.7,175.3 852.0,144.1"/>
+<circle cx="730.5" cy="204.0" r="2.6" fill="#b23a34"/>
+<circle cx="754.8" cy="140.6" r="2.6" fill="#b23a34"/>
+<circle cx="779.1" cy="240.6" r="2.6" fill="#b23a34"/>
+<circle cx="803.4" cy="181.3" r="2.6" fill="#b23a34"/>
+<circle cx="827.7" cy="175.3" r="2.6" fill="#b23a34"/>
+<circle cx="852.0" cy="144.1" r="3.4" fill="#b23a34"/>
+<circle cx="852.0" cy="144.1" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<text x="791.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +3.21</tspan><tspan fill="#d97706" dx="12">&#9675; +2.18</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="126.0,378.3 150.3,383.2 174.6,384.3 198.9,390.0 223.2,388.5 247.5,385.8"/>
+<circle cx="126.0" cy="378.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="150.3" cy="383.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="174.6" cy="384.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="198.9" cy="390.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="223.2" cy="388.5" r="2.6" fill="#1f5fa8"/>
+<circle cx="247.5" cy="385.8" r="3.4" fill="#1f5fa8"/>
+<text x="126.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="150.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="174.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="198.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="223.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="247.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="247.5" cy="385.8" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<text x="186.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.07</tspan><tspan fill="#d97706" dx="12">&#9675; +0.14</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="327.5,386.2 351.8,369.7 376.1,396.6 400.4,376.2 424.7,380.9 449.0,400.3"/>
+<circle cx="327.5" cy="386.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="351.8" cy="369.7" r="2.6" fill="#1f5fa8"/>
+<circle cx="376.1" cy="396.6" r="2.6" fill="#1f5fa8"/>
+<circle cx="400.4" cy="376.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="424.7" cy="380.9" r="2.6" fill="#1f5fa8"/>
+<circle cx="449.0" cy="400.3" r="3.4" fill="#1f5fa8"/>
+<text x="327.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="351.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="376.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="400.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="424.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="449.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="449.0" cy="400.3" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<text x="388.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -1.33</tspan><tspan fill="#d97706" dx="12">&#9675; +0.32</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="529.0,405.2 553.3,375.8 577.6,380.4 601.9,368.5 626.2,387.2 650.5,392.9"/>
+<circle cx="529.0" cy="405.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="553.3" cy="375.8" r="2.6" fill="#1f5fa8"/>
+<circle cx="577.6" cy="380.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="601.9" cy="368.5" r="2.6" fill="#1f5fa8"/>
+<circle cx="626.2" cy="387.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="650.5" cy="392.9" r="3.4" fill="#1f5fa8"/>
+<text x="529.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="553.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="577.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="601.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="626.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="650.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="650.5" cy="392.9" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<text x="589.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.69</tspan><tspan fill="#d97706" dx="12">&#9675; +0.70</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="730.5,362.4 754.8,394.0 779.1,381.1 803.4,374.2 827.7,411.6 852.0,386.7"/>
+<circle cx="730.5" cy="362.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="754.8" cy="394.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="779.1" cy="381.1" r="2.6" fill="#1f5fa8"/>
+<circle cx="803.4" cy="374.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="827.7" cy="411.6" r="2.6" fill="#1f5fa8"/>
+<circle cx="852.0" cy="386.7" r="3.4" fill="#1f5fa8"/>
+<text x="730.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="754.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="779.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="803.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="827.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="852.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="852.0" cy="386.7" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<text x="791.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.15</tspan><tspan fill="#d97706" dx="12">&#9675; +0.85</tspan></text>
+<text x="126.0" y="494" class="su2">&#9679; &#952;end, the endpoint&#160;&#160;&#183;&#160;&#160;&#9675; &#952;&#772;, the SWA average&#160;&#160;&#183;&#160;&#160;the bar between them is &#916; = Bonus &#8722; Dev&#160;&#160;&#183;&#160;&#160;dashed line = the window&#8217;s own mean</text>
+<text x="126.0" y="509" class="su2">probes 1&#8211;6 are test points at steps 18182, 19139, 20096, 21053, 22010, 22967 (&#8776;957 apart)</text>
+<text x="126.0" y="524" class="su2">&#952;&#772; read from swa_eval.jsonl with the BatchNorm buffers re-estimated: the Section 3.3 convention</text>
+</g>
+<g>
+<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.583333;0.708333" dur="7.2s" repeatCount="indefinite"/>
+<rect width="900" height="540" fill="#ffffff"/>
+<text x="34" y="22" class="ti">Why averaging can win: SPSA damps the window amplitude</text>
+<text x="34" y="38" class="su">Six test points inside the final learning-rate cycle &#183; y is AUC &#8722; the window&#8217;s own mean, in points &#183; one shared y-axis, so the amplitudes are drawn to the same scale</text>
+<text x="186.8" y="58" class="ch">1x</text>
+<text x="186.8" y="70" class="cs">lr 1e-6</text>
+<text x="388.2" y="58" class="ch">40x</text>
+<text x="388.2" y="70" class="cs">lr 8e-5</text>
+<text x="589.8" y="58" class="ch">100x</text>
+<text x="589.8" y="70" class="cs">lr 2e-4</text>
+<text x="791.2" y="58" class="ch">200x</text>
+<text x="791.2" y="70" class="cs">lr 2e-4</text>
+<text x="30" y="189.0" class="rl" fill="#b23a34" transform="rotate(-90 30 189.0)">SPSA off</text>
+<text x="30" y="393.0" class="rl" fill="#1f5fa8" transform="rotate(-90 30 393.0)">SPSA on</text>
+<rect x="126.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="181.0" x2="247.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="253.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="184.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="115.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="181.0" x2="449.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="181.0" x2="650.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="181.0" x2="852.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="126.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="385.0" x2="247.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="457.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="388.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="319.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="385.0" x2="449.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="385.0" x2="650.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="385.0" x2="852.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="126.0,176.2 150.3,179.8 174.6,180.4 198.9,180.1 223.2,185.3 247.5,184.1"/>
+<circle cx="126.0" cy="176.2" r="2.6" fill="#b23a34"/>
+<circle cx="150.3" cy="179.8" r="2.6" fill="#b23a34"/>
+<circle cx="174.6" cy="180.4" r="2.6" fill="#b23a34"/>
+<circle cx="198.9" cy="180.1" r="2.6" fill="#b23a34"/>
+<circle cx="223.2" cy="185.3" r="2.6" fill="#b23a34"/>
+<circle cx="247.5" cy="184.1" r="3.4" fill="#b23a34"/>
+<circle cx="247.5" cy="184.1" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="247.5" y1="184.1" x2="247.5" y2="180.1" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="247.5" y1="180.1" x2="261.5" y2="180.1" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="261.5" cy="180.1" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="186.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.27</tspan><tspan fill="#d97706" dx="12">&#9675; +0.08</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="327.5,177.9 351.8,143.2 376.1,188.0 400.4,170.9 424.7,226.2 449.0,179.9"/>
+<circle cx="327.5" cy="177.9" r="2.6" fill="#b23a34"/>
+<circle cx="351.8" cy="143.2" r="2.6" fill="#b23a34"/>
+<circle cx="376.1" cy="188.0" r="2.6" fill="#b23a34"/>
+<circle cx="400.4" cy="170.9" r="2.6" fill="#b23a34"/>
+<circle cx="424.7" cy="226.2" r="2.6" fill="#b23a34"/>
+<circle cx="449.0" cy="179.9" r="3.4" fill="#b23a34"/>
+<circle cx="449.0" cy="179.9" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="449.0" y1="179.9" x2="449.0" y2="173.2" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="449.0" y1="173.2" x2="463.0" y2="173.2" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="463.0" cy="173.2" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="388.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +0.10</tspan><tspan fill="#d97706" dx="12">&#9675; +0.67</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="529.0,163.4 553.3,181.4 577.6,210.2 601.9,194.7 626.2,184.4 650.5,151.9"/>
+<circle cx="529.0" cy="163.4" r="2.6" fill="#b23a34"/>
+<circle cx="553.3" cy="181.4" r="2.6" fill="#b23a34"/>
+<circle cx="577.6" cy="210.2" r="2.6" fill="#b23a34"/>
+<circle cx="601.9" cy="194.7" r="2.6" fill="#b23a34"/>
+<circle cx="626.2" cy="184.4" r="2.6" fill="#b23a34"/>
+<circle cx="650.5" cy="151.9" r="3.4" fill="#b23a34"/>
+<circle cx="650.5" cy="151.9" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="650.5" y1="151.9" x2="650.5" y2="164.5" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="650.5" y1="164.5" x2="664.5" y2="164.5" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="664.5" cy="164.5" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="589.8" y="83.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +2.53</tspan><tspan fill="#d97706" dx="12">&#9675; +1.43</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="730.5,204.0 754.8,140.6 779.1,240.6 803.4,181.3 827.7,175.3 852.0,144.1"/>
+<circle cx="730.5" cy="204.0" r="2.6" fill="#b23a34"/>
+<circle cx="754.8" cy="140.6" r="2.6" fill="#b23a34"/>
+<circle cx="779.1" cy="240.6" r="2.6" fill="#b23a34"/>
+<circle cx="803.4" cy="181.3" r="2.6" fill="#b23a34"/>
+<circle cx="827.7" cy="175.3" r="2.6" fill="#b23a34"/>
+<circle cx="852.0" cy="144.1" r="3.4" fill="#b23a34"/>
+<circle cx="852.0" cy="144.1" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="852.0" y1="144.1" x2="852.0" y2="155.9" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="852.0" y1="155.9" x2="866.0" y2="155.9" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="866.0" cy="155.9" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="791.2" y="83.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +3.21</tspan><tspan fill="#d97706" dx="12">&#9675; +2.18</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="126.0,378.3 150.3,383.2 174.6,384.3 198.9,390.0 223.2,388.5 247.5,385.8"/>
+<circle cx="126.0" cy="378.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="150.3" cy="383.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="174.6" cy="384.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="198.9" cy="390.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="223.2" cy="388.5" r="2.6" fill="#1f5fa8"/>
+<circle cx="247.5" cy="385.8" r="3.4" fill="#1f5fa8"/>
+<text x="126.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="150.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="174.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="198.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="223.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="247.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="247.5" cy="385.8" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="247.5" y1="385.8" x2="247.5" y2="383.3" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="247.5" y1="383.3" x2="261.5" y2="383.3" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="261.5" cy="383.3" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="186.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="186.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.07</tspan><tspan fill="#d97706" dx="12">&#9675; +0.14</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="327.5,386.2 351.8,369.7 376.1,396.6 400.4,376.2 424.7,380.9 449.0,400.3"/>
+<circle cx="327.5" cy="386.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="351.8" cy="369.7" r="2.6" fill="#1f5fa8"/>
+<circle cx="376.1" cy="396.6" r="2.6" fill="#1f5fa8"/>
+<circle cx="400.4" cy="376.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="424.7" cy="380.9" r="2.6" fill="#1f5fa8"/>
+<circle cx="449.0" cy="400.3" r="3.4" fill="#1f5fa8"/>
+<text x="327.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="351.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="376.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="400.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="424.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="449.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="449.0" cy="400.3" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="449.0" y1="400.3" x2="449.0" y2="381.3" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="449.0" y1="381.3" x2="463.0" y2="381.3" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="463.0" cy="381.3" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="388.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="388.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -1.33</tspan><tspan fill="#d97706" dx="12">&#9675; +0.32</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="529.0,405.2 553.3,375.8 577.6,380.4 601.9,368.5 626.2,387.2 650.5,392.9"/>
+<circle cx="529.0" cy="405.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="553.3" cy="375.8" r="2.6" fill="#1f5fa8"/>
+<circle cx="577.6" cy="380.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="601.9" cy="368.5" r="2.6" fill="#1f5fa8"/>
+<circle cx="626.2" cy="387.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="650.5" cy="392.9" r="3.4" fill="#1f5fa8"/>
+<text x="529.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="553.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="577.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="601.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="626.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="650.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="650.5" cy="392.9" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="650.5" y1="392.9" x2="650.5" y2="376.9" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="650.5" y1="376.9" x2="664.5" y2="376.9" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="664.5" cy="376.9" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="589.8" y="287.0" class="hs">spread &#8212;</text>
+<text x="589.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.69</tspan><tspan fill="#d97706" dx="12">&#9675; +0.70</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="730.5,362.4 754.8,394.0 779.1,381.1 803.4,374.2 827.7,411.6 852.0,386.7"/>
+<circle cx="730.5" cy="362.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="754.8" cy="394.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="779.1" cy="381.1" r="2.6" fill="#1f5fa8"/>
+<circle cx="803.4" cy="374.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="827.7" cy="411.6" r="2.6" fill="#1f5fa8"/>
+<circle cx="852.0" cy="386.7" r="3.4" fill="#1f5fa8"/>
+<text x="730.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="754.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="779.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="803.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="827.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="852.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="852.0" cy="386.7" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="852.0" y1="386.7" x2="852.0" y2="375.2" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="852.0" y1="375.2" x2="866.0" y2="375.2" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="866.0" cy="375.2" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="791.2" y="287.0" class="hs">spread &#8212;</text>
+<text x="791.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.15</tspan><tspan fill="#d97706" dx="12">&#9675; +0.85</tspan></text>
+<text x="126.0" y="494" class="su2">&#9679; &#952;end, the endpoint&#160;&#160;&#183;&#160;&#160;&#9675; &#952;&#772;, the SWA average&#160;&#160;&#183;&#160;&#160;the bar between them is &#916; = Bonus &#8722; Dev&#160;&#160;&#183;&#160;&#160;dashed line = the window&#8217;s own mean</text>
+<text x="126.0" y="509" class="su2">probes 1&#8211;6 are test points at steps 18182, 19139, 20096, 21053, 22010, 22967 (&#8776;957 apart)</text>
+<text x="126.0" y="524" class="su2">&#952;&#772; read from swa_eval.jsonl with the BatchNorm buffers re-estimated: the Section 3.3 convention</text>
+</g>
+<g>
+<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.708333;1.000000" dur="7.2s" repeatCount="indefinite"/>
+<rect width="900" height="540" fill="#ffffff"/>
+<text x="34" y="22" class="ti">Why averaging can win: SPSA damps the window amplitude</text>
+<text x="34" y="38" class="su">Six test points inside the final learning-rate cycle &#183; y is AUC &#8722; the window&#8217;s own mean, in points &#183; one shared y-axis, so the amplitudes are drawn to the same scale</text>
+<text x="186.8" y="58" class="ch">1x</text>
+<text x="186.8" y="70" class="cs">lr 1e-6</text>
+<text x="388.2" y="58" class="ch">40x</text>
+<text x="388.2" y="70" class="cs">lr 8e-5</text>
+<text x="589.8" y="58" class="ch">100x</text>
+<text x="589.8" y="70" class="cs">lr 2e-4</text>
+<text x="791.2" y="58" class="ch">200x</text>
+<text x="791.2" y="70" class="cs">lr 2e-4</text>
+<text x="30" y="189.0" class="rl" fill="#b23a34" transform="rotate(-90 30 189.0)">SPSA off</text>
+<text x="30" y="393.0" class="rl" fill="#1f5fa8" transform="rotate(-90 30 393.0)">SPSA on</text>
+<rect x="126.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="181.0" x2="247.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="253.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="184.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="115.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="181.0" x2="449.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="181.0" x2="650.5" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="112.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="181.0" x2="852.0" y2="181.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="126.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="126.0" y1="385.0" x2="247.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="121.0" y="457.2" class="tk" text-anchor="end">-6</text>
+<text x="121.0" y="388.2" class="tk" text-anchor="end">+0</text>
+<text x="121.0" y="319.2" class="tk" text-anchor="end">+6</text>
+<rect x="327.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="327.5" y1="385.0" x2="449.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="529.0" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="529.0" y1="385.0" x2="650.5" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="730.5" y="316.0" width="121.5" height="138.0" fill="#fcfdfe" stroke="#dfe3e8" stroke-width="0.8"/>
+<line x1="730.5" y1="385.0" x2="852.0" y2="385.0" stroke="#7a828e" stroke-width="0.8" stroke-dasharray="3 3"/>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="126.0,176.2 150.3,179.8 174.6,180.4 198.9,180.1 223.2,185.3 247.5,184.1"/>
+<circle cx="126.0" cy="176.2" r="2.6" fill="#b23a34"/>
+<circle cx="150.3" cy="179.8" r="2.6" fill="#b23a34"/>
+<circle cx="174.6" cy="180.4" r="2.6" fill="#b23a34"/>
+<circle cx="198.9" cy="180.1" r="2.6" fill="#b23a34"/>
+<circle cx="223.2" cy="185.3" r="2.6" fill="#b23a34"/>
+<circle cx="247.5" cy="184.1" r="3.4" fill="#b23a34"/>
+<circle cx="247.5" cy="184.1" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="247.5" y1="184.1" x2="247.5" y2="180.1" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="247.5" y1="180.1" x2="261.5" y2="180.1" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="261.5" cy="180.1" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="186.8" y="83.0" class="hs">spread 0.79 &#8212; averaging helps</text>
+<text x="186.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.27</tspan><tspan fill="#d97706" dx="12">&#9675; +0.08</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="327.5,177.9 351.8,143.2 376.1,188.0 400.4,170.9 424.7,226.2 449.0,179.9"/>
+<circle cx="327.5" cy="177.9" r="2.6" fill="#b23a34"/>
+<circle cx="351.8" cy="143.2" r="2.6" fill="#b23a34"/>
+<circle cx="376.1" cy="188.0" r="2.6" fill="#b23a34"/>
+<circle cx="400.4" cy="170.9" r="2.6" fill="#b23a34"/>
+<circle cx="424.7" cy="226.2" r="2.6" fill="#b23a34"/>
+<circle cx="449.0" cy="179.9" r="3.4" fill="#b23a34"/>
+<circle cx="449.0" cy="179.9" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="449.0" y1="179.9" x2="449.0" y2="173.2" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="449.0" y1="173.2" x2="463.0" y2="173.2" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="463.0" cy="173.2" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="388.2" y="83.0" class="hs">spread 7.22 &#8212; averaging helps</text>
+<text x="388.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +0.10</tspan><tspan fill="#d97706" dx="12">&#9675; +0.67</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="529.0,163.4 553.3,181.4 577.6,210.2 601.9,194.7 626.2,184.4 650.5,151.9"/>
+<circle cx="529.0" cy="163.4" r="2.6" fill="#b23a34"/>
+<circle cx="553.3" cy="181.4" r="2.6" fill="#b23a34"/>
+<circle cx="577.6" cy="210.2" r="2.6" fill="#b23a34"/>
+<circle cx="601.9" cy="194.7" r="2.6" fill="#b23a34"/>
+<circle cx="626.2" cy="184.4" r="2.6" fill="#b23a34"/>
+<circle cx="650.5" cy="151.9" r="3.4" fill="#b23a34"/>
+<circle cx="650.5" cy="151.9" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="650.5" y1="151.9" x2="650.5" y2="164.5" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="650.5" y1="164.5" x2="664.5" y2="164.5" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="664.5" cy="164.5" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="589.8" y="83.0" class="hs">spread 5.07 &#8212; averaging hurts</text>
+<text x="589.8" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +2.53</tspan><tspan fill="#d97706" dx="12">&#9675; +1.43</tspan></text>
+<polyline fill="none" stroke="#b23a34" stroke-width="1.9" stroke-linejoin="round" points="730.5,204.0 754.8,140.6 779.1,240.6 803.4,181.3 827.7,175.3 852.0,144.1"/>
+<circle cx="730.5" cy="204.0" r="2.6" fill="#b23a34"/>
+<circle cx="754.8" cy="140.6" r="2.6" fill="#b23a34"/>
+<circle cx="779.1" cy="240.6" r="2.6" fill="#b23a34"/>
+<circle cx="803.4" cy="181.3" r="2.6" fill="#b23a34"/>
+<circle cx="827.7" cy="175.3" r="2.6" fill="#b23a34"/>
+<circle cx="852.0" cy="144.1" r="3.4" fill="#b23a34"/>
+<circle cx="852.0" cy="144.1" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="852.0" y1="144.1" x2="852.0" y2="155.9" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="852.0" y1="155.9" x2="866.0" y2="155.9" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="866.0" cy="155.9" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="791.2" y="83.0" class="hs">spread 8.69 &#8212; averaging hurts</text>
+<text x="791.2" y="96.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; +3.21</tspan><tspan fill="#d97706" dx="12">&#9675; +2.18</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="126.0,378.3 150.3,383.2 174.6,384.3 198.9,390.0 223.2,388.5 247.5,385.8"/>
+<circle cx="126.0" cy="378.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="150.3" cy="383.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="174.6" cy="384.3" r="2.6" fill="#1f5fa8"/>
+<circle cx="198.9" cy="390.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="223.2" cy="388.5" r="2.6" fill="#1f5fa8"/>
+<circle cx="247.5" cy="385.8" r="3.4" fill="#1f5fa8"/>
+<text x="126.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="150.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="174.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="198.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="223.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="247.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="247.5" cy="385.8" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="247.5" y1="385.8" x2="247.5" y2="383.3" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="247.5" y1="383.3" x2="261.5" y2="383.3" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="261.5" cy="383.3" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="186.8" y="287.0" class="hs">spread 1.02 &#8212; averaging helps</text>
+<text x="186.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.07</tspan><tspan fill="#d97706" dx="12">&#9675; +0.14</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="327.5,386.2 351.8,369.7 376.1,396.6 400.4,376.2 424.7,380.9 449.0,400.3"/>
+<circle cx="327.5" cy="386.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="351.8" cy="369.7" r="2.6" fill="#1f5fa8"/>
+<circle cx="376.1" cy="396.6" r="2.6" fill="#1f5fa8"/>
+<circle cx="400.4" cy="376.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="424.7" cy="380.9" r="2.6" fill="#1f5fa8"/>
+<circle cx="449.0" cy="400.3" r="3.4" fill="#1f5fa8"/>
+<text x="327.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="351.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="376.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="400.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="424.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="449.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="449.0" cy="400.3" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="449.0" y1="400.3" x2="449.0" y2="381.3" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="449.0" y1="381.3" x2="463.0" y2="381.3" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="463.0" cy="381.3" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="388.2" y="287.0" class="hs">spread 2.66 &#8212; averaging helps</text>
+<text x="388.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -1.33</tspan><tspan fill="#d97706" dx="12">&#9675; +0.32</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="529.0,405.2 553.3,375.8 577.6,380.4 601.9,368.5 626.2,387.2 650.5,392.9"/>
+<circle cx="529.0" cy="405.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="553.3" cy="375.8" r="2.6" fill="#1f5fa8"/>
+<circle cx="577.6" cy="380.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="601.9" cy="368.5" r="2.6" fill="#1f5fa8"/>
+<circle cx="626.2" cy="387.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="650.5" cy="392.9" r="3.4" fill="#1f5fa8"/>
+<text x="529.0" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="553.3" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="577.6" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="601.9" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="626.2" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="650.5" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="650.5" cy="392.9" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="650.5" y1="392.9" x2="650.5" y2="376.9" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="650.5" y1="376.9" x2="664.5" y2="376.9" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="664.5" cy="376.9" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="589.8" y="287.0" class="hs">spread 3.20 &#8212; averaging helps</text>
+<text x="589.8" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.69</tspan><tspan fill="#d97706" dx="12">&#9675; +0.70</tspan></text>
+<polyline fill="none" stroke="#1f5fa8" stroke-width="1.9" stroke-linejoin="round" points="730.5,362.4 754.8,394.0 779.1,381.1 803.4,374.2 827.7,411.6 852.0,386.7"/>
+<circle cx="730.5" cy="362.4" r="2.6" fill="#1f5fa8"/>
+<circle cx="754.8" cy="394.0" r="2.6" fill="#1f5fa8"/>
+<circle cx="779.1" cy="381.1" r="2.6" fill="#1f5fa8"/>
+<circle cx="803.4" cy="374.2" r="2.6" fill="#1f5fa8"/>
+<circle cx="827.7" cy="411.6" r="2.6" fill="#1f5fa8"/>
+<circle cx="852.0" cy="386.7" r="3.4" fill="#1f5fa8"/>
+<text x="730.5" y="467.0" class="tk" text-anchor="middle">1</text>
+<text x="754.8" y="467.0" class="tk" text-anchor="middle">2</text>
+<text x="779.1" y="467.0" class="tk" text-anchor="middle">3</text>
+<text x="803.4" y="467.0" class="tk" text-anchor="middle">4</text>
+<text x="827.7" y="467.0" class="tk" text-anchor="middle">5</text>
+<text x="852.0" y="467.0" class="tk" text-anchor="middle">6</text>
+<circle cx="852.0" cy="386.7" r="5.0" fill="#1a1a1a" stroke="#ffffff" stroke-width="1.6"/>
+<line x1="852.0" y1="386.7" x2="852.0" y2="375.2" stroke="#d97706" stroke-width="2.4" stroke-linecap="round"/>
+<line x1="852.0" y1="375.2" x2="866.0" y2="375.2" stroke="#d97706" stroke-width="1.1" stroke-dasharray="2 2"/>
+<circle cx="866.0" cy="375.2" r="5.0" fill="#ffffff" stroke="#d97706" stroke-width="2.0"/>
+<text x="791.2" y="287.0" class="hs">spread 4.28 &#8212; averaging helps</text>
+<text x="791.2" y="300.0" class="hm" text-anchor="middle"><tspan fill="#1a1a1a">&#9679; -0.15</tspan><tspan fill="#d97706" dx="12">&#9675; +0.85</tspan></text>
+<text x="126.0" y="494" class="su2">&#9679; &#952;end, the endpoint&#160;&#160;&#183;&#160;&#160;&#9675; &#952;&#772;, the SWA average&#160;&#160;&#183;&#160;&#160;the bar between them is &#916; = Bonus &#8722; Dev&#160;&#160;&#183;&#160;&#160;dashed line = the window&#8217;s own mean</text>
+<text x="126.0" y="509" class="su2">probes 1&#8211;6 are test points at steps 18182, 19139, 20096, 21053, 22010, 22967 (&#8776;957 apart)</text>
+<text x="126.0" y="524" class="su2">&#952;&#772; read from swa_eval.jsonl with the BatchNorm buffers re-estimated: the Section 3.3 convention</text>
+</g>
+<!-- drawn from logs/mechanism_ucf/*/{training.log,swa_eval.jsonl} by figures/animate_mechanism.py -->
+</svg>

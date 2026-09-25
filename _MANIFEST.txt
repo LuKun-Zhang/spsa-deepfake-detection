@@ -212,3 +212,16 @@
   Duplicates: HELD_mexp_p_ctrl_l20.yaml, *_seed2049.yaml.
 
   The CONFIGURATIONS for all of the above are shipped. See README caveat 7.
+
+## ADDED AFTER THE PASS (same day, 2026-09-25) - not counted in the 184 above
+
+  figures/animate_mechanism.py        reads logs/mechanism_ucf/, writes the two below
+  figures/mechanism_animation.svg     the README animation, 2x4 panels, 7.2 s SMIL loop
+  figures/mechanism_animation.gif     the same animation, raster fallback
+
+  figures/README.md                   MODIFIED: documents the above
+  README.md                           MODIFIED: embeds the animation in the
+                                      "mechanism window (Section 3.3)" section
+
+  The animation draws only from logs/mechanism_ucf/, re-derives every number, and
+  refuses to draw (exit 1) if the logs disagree with the paper's Section 3.3 values.
