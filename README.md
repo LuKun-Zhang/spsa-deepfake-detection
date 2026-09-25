@@ -9,9 +9,38 @@ Code, configurations, and training logs for the paper:
 
 ---
 
+<p align="center">
+  <img src="figures/mechanism_animation.svg" width="880"
+       alt="Animated Section 3.3 mechanism window: SPSA damps the amplitude, so the endpoint falls below the window mean and averaging becomes a gain instead of a loss">
+</p>
+
+<p align="center"><sub><b>The mechanism of the paper, in one gesture.</b>
+The final learning-rate cycle, probed six times, at four rates — with SPSA <b>off</b> (top row) and
+<b>on</b> (bottom row). Every panel is drawn to the same y-axis, because the claim is about amplitude.
+The six probes appear one at a time; then the endpoint (<code>●</code> <code>theta_end</code>) and the
+SWA average (<code>○</code> <code>theta_bar</code>) drop in, and the orange bar between them is
+<code>Delta = Bonus − Dev</code>.<br>
+<b>SPSA off:</b> the window spread reaches 7.22 / 5.07 / 8.69 pt, and at the top two rates the
+endpoint finishes <i>above</i> the mean — so averaging <b>costs</b> 1.10 and 1.02 pt.
+<b>SPSA on:</b> the spread is held to 2.66 / 3.20 / 4.28 pt, the endpoint sits <i>below</i> the mean at
+every rate — so averaging <b>pays</b> at every rate.<br>
+<a href="figures/mechanism_animation.gif">GIF version</a>, if your viewer will not animate SVG
+(the mobile app shows only the first frame) &#183;
+<a href="#the-mechanism-window-33">the numbers behind it, in §3.3</a> &#183;
+drawn from the shipped logs by
+<a href="figures/animate_mechanism.py"><code>figures/animate_mechanism.py</code></a>, which refuses to
+draw if the logs disagree with the paper.</sub></p>
+
+---
+
 ## 👋 A note for ICASSP 2027 reviewers
 
 Welcome — and thank you for reviewing this submission. This repository is its artifact.
+
+The animated figure at the top of this page **is** §3.3 in motion: it is drawn from this
+repository's own logs, and `figures/animate_mechanism.py` exits non-zero rather than draw a version
+that disagrees with the paper. Ten seconds of watching it is the fastest route into the paper's
+claim.
 
 **You do not need to run anything.** Reproducing the pipeline end to end takes FaceForensics++,
 the four cross-domain datasets, and multi-GPU-days, and **no claim in the paper depends on it**.
@@ -185,24 +214,16 @@ Bonus    AUC(theta_bar) - mean of the six
 Delta    Bonus - Dev
 ```
 
-**The mechanism, animated.** The six probes appear one at a time; then the endpoint (`●`
-`theta_end`) and the SWA average (`○` `theta_bar`) drop in, joined by a bar whose length is
-`Delta`. With SPSA off the control's window spread grows to **7.22 / 5.07 / 8.69 pt** at
-40× / 100× / 200×, and at the top two rates its endpoint finishes *above* the window mean, so
-averaging **costs** 1.10 and 1.02 pt. With SPSA on the spread is held to **2.66 / 3.20 / 4.28 pt**,
-the endpoint sits *below* the mean at every rate, and averaging **pays** at every rate.
+**The mechanism, animated** — see the figure at the
+[top of this file](#spsa--swa-for-cross-domain-deepfake-detection--reproduction-package). With SPSA
+off the control's window spread reaches **7.22 / 5.07 / 8.69 pt** at 40× / 100× / 200×, and at the
+top two rates its endpoint finishes *above* the window mean, so averaging **costs** 1.10 and 1.02 pt.
+With SPSA on the spread is held to **2.66 / 3.20 / 4.28 pt**, the endpoint sits *below* the mean at
+every rate, and averaging **pays** at every rate.
 
-<p align="center">
-  <img src="figures/mechanism_animation.svg" width="880"
-       alt="Animated Section 3.3 mechanism window: SPSA damps the amplitude, so the endpoint falls below the window mean and averaging becomes a gain instead of a loss">
-</p>
-
-<sub>Every panel shares one y-axis, because the claim is about amplitude and the amplitudes have
-to be drawn to the same scale. If your viewer does not animate SVG (the GitHub mobile app, for
-instance, shows only the first frame), use
-[`figures/mechanism_animation.gif`](figures/mechanism_animation.gif). Both are regenerated from
-the shipped logs by `python figures/animate_mechanism.py`, which re-derives every number from
-`logs/mechanism_ucf/` and **refuses to draw if the logs disagree with the paper**.</sub>
+It is drawn by `python figures/animate_mechanism.py`, which re-derives every number from
+`logs/mechanism_ucf/` and **refuses to draw if the logs disagree with the paper** — see
+[`figures/README.md`](figures/README.md#animate_mechanismpy).
 
 `swa_eval.jsonl` stores `theta_bar` twice — once with the BatchNorm buffers re-estimated on the
 training set (`bn = true`) and once with the buffers frozen from the endpoint (`bn = false`). The
