@@ -1,8 +1,10 @@
 # _MANIFEST.txt
 # Files added by the artifact-completion pass, 2026-09-25.
-# No existing file was deleted or edited, except
-# code/adaptive/networks/__init__.py (two registry imports appended, so the
-# ConvNeXt-Tiny and SwinV2-Tiny backbones are importable).
+# No existing file was deleted, and only two were edited:
+#   code/adaptive/networks/__init__.py  (+2 registry imports, so the
+#                                        ConvNeXt-Tiny and SwinV2-Tiny
+#                                        are importable)
+#   README.md                            (rewritten against the submitted v25 manuscript)
 
 ## ADDED  (184 files)
 
