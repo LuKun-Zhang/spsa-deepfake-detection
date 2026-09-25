@@ -1,0 +1,212 @@
+# _MANIFEST.txt
+# Files added by the artifact-completion pass, 2026-09-25.
+# No existing file was deleted or edited, except
+# code/adaptive/networks/__init__.py (two registry imports appended, so the
+# ConvNeXt-Tiny and SwinV2-Tiny backbones are importable).
+
+## ADDED  (184 files)
+
+  code/adaptive/networks/convnext_tiny.py
+  code/adaptive/networks/swinv2_tiny.py
+  code/gauss/dataset_abstract_dataset.py
+  code/gauss/dataset_pair_dataset.py
+  code/gauss/loss___init__.py
+  code/gauss/loss_cross_method_consistency.py
+  code/gauss/networks/__init__.py
+  code/gauss/networks/convnext_tiny.py
+  code/gauss/networks/swinv2_tiny.py
+  code/gauss/spsa_modules.py
+  code/gauss/train.py
+  code/gauss/trainer.py
+  code/gauss/ucf_detector.py
+  code/mechanism/base_detector.py
+  code/mechanism/dataset_abstract_dataset.py
+  code/mechanism/dataset_pair_dataset.py
+  code/mechanism/loss___init__.py
+  code/mechanism/loss_cross_method_consistency.py
+  code/mechanism/networks/__init__.py
+  code/mechanism/networks/convnext_tiny.py
+  code/mechanism/networks/efficientnetb4.py
+  code/mechanism/networks/resnet34.py
+  code/mechanism/networks/swinv2_tiny.py
+  code/mechanism/spsa_modules.py
+  code/mechanism/train.py
+  code/mechanism/train_config.yaml
+  code/mechanism/trainer.py
+  code/mechanism/ucf_detector.py
+  configs/cnx_stat_SPSA1SWA_convnext_tiny_s2048.yaml
+  configs/cnx_stat_ctrl_convnext_tiny_s2048.yaml
+  configs/eval_probe_ctrl.yaml
+  configs/eval_probe_r34_ctrl.yaml
+  configs/eval_probe_r34_spsa.yaml
+  configs/eval_probe_spsa_l100.yaml
+  configs/mexp_p_ctrl_l0.yaml
+  configs/mexp_p_ctrl_l0_nz.yaml
+  configs/mexp_p_ctrl_l100.yaml
+  configs/mexp_p_ctrl_l20.yaml
+  configs/mexp_p_ctrl_l50.yaml
+  configs/mexp_p_spsa_l0.yaml
+  configs/mexp_p_spsa_l100.yaml
+  configs/mexp_p_spsa_l20.yaml
+  configs/mexp_p_spsa_l50.yaml
+  configs/mexp_smoke.yaml
+  configs/mexp_smoke_l0.yaml
+  configs/mexp_smoke_win.yaml
+  configs/r34_stat_SPSA1SWA_resnet34_s1024.yaml
+  configs/r34_stat_SPSA1SWA_resnet34_s4096.yaml
+  configs/r34_stat_ctrl_resnet34_s1024.yaml
+  configs/r34_stat_ctrl_resnet34_s4096.yaml
+  configs/r34_stat_spsaonly_resnet34_s2048.yaml
+  configs/r34_stat_swaonly_resnet34_s2048.yaml
+  configs/r34m_ctrl_norgb_s2048.yaml
+  configs/r34m_ctrl_s2048.yaml
+  configs/r34m_preflight.yaml
+  configs/r34m_spsa1swa_norgb_s2048.yaml
+  configs/r34m_spsa1swa_s2048.yaml
+  configs/r34m_spsaonly_s2048.yaml
+  configs/r34m_swaonly_s2048.yaml
+  configs/sota2_altfreezing_s1024.yaml
+  configs/sota2_effort_s1024.yaml
+  configs/sota2_lsda_s1024.yaml
+  configs/sota2_uia_vit_s1024.yaml
+  configs/sota_capsule_net_s1024.yaml
+  configs/sota_core_s1024.yaml
+  configs/sota_f3net_s1024.yaml
+  configs/sota_ffd_s1024.yaml
+  configs/sota_iid_s1024.yaml
+  configs/sota_rfm_s1024.yaml
+  configs/sota_sia_s1024.run2.yaml
+  configs/sota_sia_s1024.yaml
+  configs/sota_spsl_s1024.run2.yaml
+  configs/sota_spsl_s1024.yaml
+  configs/sota_srm_s1024.run2.yaml
+  configs/sota_srm_s1024.yaml
+  configs/sota_xception_s1024.yaml
+  configs/stat_CTRLSWA_s4096.yaml
+  configs/stat_SPSA1SWA_s4096.yaml
+  configs/stat_SPSA_s1024.yaml
+  configs/swv2_stat_SPSA1SWA_swinv2_tiny_s2048.yaml
+  configs/swv2_stat_ctrl_swinv2_tiny_s2048.yaml
+  configs/ucfx_stat_ph1swa_xception_s2048.yaml
+  configs/ucfx_stat_ph_xception_s2048.yaml
+  configs/ucfx_stat_spsa1swa_xception_s2048.yaml
+  docs/config_generation_manifest.md
+  docs/cross_backbone_convnext.md
+  docs/mechanism_endpoint_position.md
+  docs/r34_backbone_rerun.md
+  docs/sota_reference_table.md
+  figures/README.md
+  figures/_draw_mech_two_panels.py
+  figures/plot_controlled.py
+  figures/plot_mech_board.py
+  figures/plot_mech_gap.py
+  figures/plot_mech_traj.py
+  figures/plot_spike.py
+  figures/plot_spsa_arch.py
+  figures/plot_superadd.py
+  logs/cross_bb/cnx_ctrl.out
+  logs/cross_bb/cnx_ctrl_589original.out
+  logs/cross_bb/cnx_spsaswa.out
+  logs/cross_bb/swv2_ctrl.out
+  logs/cross_bb/swv2_spsaswa.out
+  logs/cross_bb/ucf_2026-09-19-20-12-24/training.log
+  logs/cross_bb/ucf_2026-09-19-23-06-01/mediators.jsonl
+  logs/cross_bb/ucf_2026-09-19-23-06-01/probes.jsonl
+  logs/cross_bb/ucf_2026-09-19-23-06-01/swa_eval.jsonl
+  logs/cross_bb/ucf_2026-09-19-23-06-01/training.log
+  logs/cross_bb/ucf_2026-09-19-23-06-01/window_probe.json
+  logs/cross_bb/ucf_2026-09-20-02-20-13/training.log
+  logs/cross_bb/ucf_2026-09-20-06-19-12/mediators.jsonl
+  logs/cross_bb/ucf_2026-09-20-06-19-12/probes.jsonl
+  logs/cross_bb/ucf_2026-09-20-06-19-12/swa_eval.jsonl
+  logs/cross_bb/ucf_2026-09-20-06-19-12/training.log
+  logs/cross_bb/ucf_2026-09-20-06-19-12/window_probe.json
+  logs/cross_bb/ucf_2026-09-22-22-20-46/training.log
+  logs/cross_bb/ucf_2026-09-23-00-24-19/training.log
+  logs/mechanism_r34/ucf_2026-09-21-00-35-35/mediators.jsonl
+  logs/mechanism_r34/ucf_2026-09-21-00-35-35/probes.jsonl
+  logs/mechanism_r34/ucf_2026-09-21-00-35-35/swa_eval.jsonl
+  logs/mechanism_r34/ucf_2026-09-21-00-35-35/training.log
+  logs/mechanism_r34/ucf_2026-09-21-00-35-35/window_probe.json
+  logs/mechanism_r34/ucf_2026-09-21-07-51-21/mediators.jsonl
+  logs/mechanism_r34/ucf_2026-09-21-07-51-21/probes.jsonl
+  logs/mechanism_r34/ucf_2026-09-21-07-51-21/swa_eval.jsonl
+  logs/mechanism_r34/ucf_2026-09-21-07-51-21/training.log
+  logs/mechanism_r34/ucf_2026-09-21-07-51-21/window_probe.json
+  logs/mechanism_ucf/ucf_2026-09-17-13-39-51/mediators.jsonl
+  logs/mechanism_ucf/ucf_2026-09-17-13-39-51/probes.jsonl
+  logs/mechanism_ucf/ucf_2026-09-17-13-39-51/swa_eval.jsonl
+  logs/mechanism_ucf/ucf_2026-09-17-13-39-51/training.log
+  logs/mechanism_ucf/ucf_2026-09-17-13-39-51/window_probe.json
+  logs/mechanism_ucf/ucf_2026-09-17-22-29-40/mediators.jsonl
+  logs/mechanism_ucf/ucf_2026-09-17-22-29-40/probes.jsonl
+  logs/mechanism_ucf/ucf_2026-09-17-22-29-40/swa_eval.jsonl
+  logs/mechanism_ucf/ucf_2026-09-17-22-29-40/training.log
+  logs/mechanism_ucf/ucf_2026-09-17-22-29-40/window_probe.json
+  logs/mechanism_ucf/ucf_2026-09-18-02-41-56/mediators.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-02-41-56/probes.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-02-41-56/swa_eval.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-02-41-56/training.log
+  logs/mechanism_ucf/ucf_2026-09-18-02-41-56/window_probe.json
+  logs/mechanism_ucf/ucf_2026-09-18-06-52-17/mediators.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-06-52-17/probes.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-06-52-17/swa_eval.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-06-52-17/training.log
+  logs/mechanism_ucf/ucf_2026-09-18-06-52-17/window_probe.json
+  logs/mechanism_ucf/ucf_2026-09-18-11-07-55/mediators.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-11-07-55/probes.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-11-07-55/swa_eval.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-11-07-55/training.log
+  logs/mechanism_ucf/ucf_2026-09-18-11-07-55/window_probe.json
+  logs/mechanism_ucf/ucf_2026-09-18-16-03-16/mediators.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-16-03-16/probes.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-16-03-16/swa_eval.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-16-03-16/training.log
+  logs/mechanism_ucf/ucf_2026-09-18-16-03-16/window_probe.json
+  logs/mechanism_ucf/ucf_2026-09-18-20-42-40/mediators.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-20-42-40/probes.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-20-42-40/swa_eval.jsonl
+  logs/mechanism_ucf/ucf_2026-09-18-20-42-40/training.log
+  logs/mechanism_ucf/ucf_2026-09-18-20-42-40/window_probe.json
+  logs/mechanism_ucf/ucf_2026-09-19-01-22-03/mediators.jsonl
+  logs/mechanism_ucf/ucf_2026-09-19-01-22-03/probes.jsonl
+  logs/mechanism_ucf/ucf_2026-09-19-01-22-03/swa_eval.jsonl
+  logs/mechanism_ucf/ucf_2026-09-19-01-22-03/training.log
+  logs/mechanism_ucf/ucf_2026-09-19-01-22-03/window_probe.json
+  logs/sota/sota_core_s1024.log
+  logs/sota/sota_f3net_s1024.log
+  logs/sota/sota_sia_s1024.log
+  logs/sota/sota_xception_s1024.log
+  scripts/chain_sota5.py
+  scripts/chain_sota6.py
+  scripts/chain_sota7.py
+  scripts/chain_sota8.py
+  scripts/eval_probe_sweep8.py
+  scripts/eval_probe_sweep_r34.py
+  scripts/gen_mexp_configs.py
+  scripts/gen_r34m_configs.py
+  scripts/launch_cross_bb.sh
+  scripts/launch_mexp.sh
+  scripts/launch_r34m.sh
+  scripts/r34m_report.py
+  scripts/verify_mechanism.py
+
+## MODIFIED  (2)
+
+  README.md
+  code/adaptive/networks/__init__.py
+
+## NOT ADDED, ON PURPOSE
+
+  Logs of runs whose numbers do not appear in the submitted paper:
+    sota_spsl_s1024.log   0.7404 - dropped from Table 1, 0 occurrences in the text
+    sota_srm_s1024.log    0.7577 - dropped from Table 1, 0 occurrences in the text
+  Runs that are not evidence for anything:
+    logs/mechanism_ucf/ucf_2026-09-16-21-34-05   pre-fix, probe log empty
+    logs/mechanism_ucf/ucf_2026-09-17-17-51-30   l0_nz variant, unused
+    logs/mechanism_r34/ucf_2026-09-21-04-34-51   truncated duplicate
+    logs/mechanism_r34/ucf_2026-09-21-11-22-53   killed after 2 test points
+  Driver noise: precheck*.out and _launch*.log from the cross-backbone batch.
+  Duplicates: HELD_mexp_p_ctrl_l20.yaml, *_seed2049.yaml.
+
+  The CONFIGURATIONS for all of the above are shipped. See README caveat 7.
